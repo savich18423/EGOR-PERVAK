@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B1GPapa - Человек, который горел так сильно, что сгорел до тла</title>
+    <title>B1GPapa - Легенда русского стриминга</title>
     <style>
         * {
             margin: 0;
@@ -11,7 +11,7 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
             background-color: #0a0a0a;
             color: #fff;
@@ -19,25 +19,9 @@
             overflow-x: hidden;
             min-height: 100vh;
             background: radial-gradient(ellipse at center, #1a0000 0%, #0a0a0a 70%);
-            position: relative;
         }
-
-        /* Эффект глубины при скролле */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            opacity: 0.15;
-            z-index: -1;
-            transform: translateZ(-1px) scale(1.1);
-            will-change: transform;
-        }
-
-        /* Шапка и навигация */
+        
+        /* Шапка */
         header {
             background: linear-gradient(to bottom, rgba(20, 20, 20, 0.98) 0%, rgba(10, 10, 10, 0.92) 100%);
             padding: 1rem 0;
@@ -48,862 +32,546 @@
             border-bottom: 1px solid rgba(255, 69, 0, 0.4);
             backdrop-filter: blur(10px);
         }
-
+        
         nav {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
-
+        
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
+        
         .logo {
             font-size: 2rem;
             font-weight: 900;
             color: #ff4500;
-            text-shadow: 0 0 15px rgba(255, 69, 0, 0.7), 0 0 25px rgba(255, 69, 0, 0.4);
+            text-shadow: 0 0 15px rgba(255, 69, 0, 0.7);
             letter-spacing: 2px;
-            background: linear-gradient(45deg, #ff4500, #ff8c00, #ff4500);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: logoShine 3s ease-in-out infinite alternate;
-            padding: 5px 10px;
-            border-radius: 5px;
         }
-        @keyframes logoShine {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        .logo span {
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        /* Иконки соцсетей в шапке */
-        .header-social {
-            display: flex;
-            gap: 1.2rem;
-        }
-        .header-social a {
-            color: #ccc;
-            font-size: 1.6rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            padding: 5px;
-        }
-        .header-social a:hover {
-            color: #ff4500;
-            transform: translateY(-5px) scale(1.2);
-            text-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
-        }
-        .header-social a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #ff4500;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        .header-social a:hover::after {
-            width: 100%;
-        }
-
+        
         .nav-menu {
             display: flex;
             list-style: none;
             gap: 1.5rem;
         }
-
+        
         .nav-menu a {
             color: #fff;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.1rem;
             padding: 0.6rem 1.2rem;
             border-radius: 6px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
-        .nav-menu a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 69, 0, 0.2), transparent);
-            transition: left 0.7s ease;
-        }
-        .nav-menu a:hover::before {
-            left: 100%;
-        }
+        
         .nav-menu a:hover {
             background-color: rgba(255, 69, 0, 0.9);
             color: #000;
             box-shadow: 0 5px 15px rgba(255, 69, 0, 0.4);
-            transform: translateY(-3px);
         }
-
+        
         /* Основной контент */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
-
-        .hero {
-            text-align: center;
-            padding: 5rem 0 4rem;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            color: #ff4500;
-            text-shadow: 0 0 20px rgba(255, 69, 0, 0.9);
-            line-height: 1.2;
-            position: relative;
-            display: inline-block;
-            padding: 0 20px;
-            letter-spacing: 1px;
-            /* Эффект огня для поддерживающих браузеров */
-            background: linear-gradient(to bottom, #ff8a00, #ff4500, #ff0000);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: fireText 2s ease-in-out infinite alternate;
-        }
-        @keyframes fireText {
-            0% { filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.7)); }
-            100% { filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.9)) drop-shadow(0 0 30px rgba(255, 69, 0, 0.5)); }
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            color: #eee;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            background: rgba(0, 0, 0, 0.4);
-            padding: 1.5rem;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            border-left: 3px solid #ff4500;
-        }
-
-        /* Секции */
+        
         section {
             background: linear-gradient(145deg, rgba(40, 40, 40, 0.9) 0%, rgba(20, 20, 20, 0.95) 100%);
             border-radius: 16px;
             padding: 3rem;
             margin-bottom: 3rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             border-left: 6px solid #ff4500;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 69, 0, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(255, 69, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-        section:hover::before {
-            opacity: 1;
-        }
-
+        
         h2 {
             color: #ffcc00;
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
             border-bottom: 3px solid rgba(255, 69, 0, 0.5);
             padding-bottom: 0.7rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Герой-секция */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: none;
+            border: none;
+            box-shadow: none;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #ff4500;
+            text-shadow: 0 0 20px rgba(255, 69, 0, 0.9);
+        }
+        
+        /* Стили для таймлайна */
+        .timeline {
             position: relative;
-            display: inline-block;
+            max-width: 900px;
+            margin: 3rem auto;
         }
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #ff4500, transparent);
-        }
-
-        h3 {
-            color: #ffa500;
-            font-size: 1.9rem;
-            margin: 1.5rem 0 1rem;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        p {
-            margin-bottom: 1.2rem;
-            font-size: 1.15rem;
-            color: #ddd;
-        }
-
-        .highlight {
-            background: linear-gradient(90deg, rgba(255, 69, 0, 0.15) 0%, rgba(255, 69, 0, 0.05) 100%);
-            padding: 1.8rem;
+        
+        .timeline-item {
+            background: rgba(40, 40, 40, 0.7);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
             border-radius: 10px;
-            border-left: 5px solid #ff4500;
-            margin: 2.5rem 0;
-            box-shadow: inset 0 0 20px rgba(255, 69, 0, 0.1);
+            border-left: 4px solid #ff4500;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(10px);
+            background: rgba(50, 50, 50, 0.8);
+        }
+        
+        .timeline-year {
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: rgba(255, 69, 0, 0.2);
+            border-radius: 15px;
+        }
+        
+        .timeline-highlight {
+            background: rgba(255, 69, 0, 0.15);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 3px solid #ff4500;
+        }
+        
+        /* Стили для коллабораций */
+        .collab-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .collab-tag {
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.2), rgba(255, 140, 0, 0.2));
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            color: #ffcc00;
+            border: 1px solid rgba(255, 69, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .collab-tag:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.3), rgba(255, 140, 0, 0.3));
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3);
+        }
+        
+        /* Стили для баттл-секции */
+        .battle-highlights {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #9146FF;
+        }
+        
+        .battle-list {
+            list-style: none;
+            margin-left: 1rem;
+        }
+        
+        .battle-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
             position: relative;
-            overflow: hidden;
         }
-        .highlight::before {
-            content: '“';
+        
+        .battle-list li:before {
+            content: '🥊';
             position: absolute;
-            top: -20px;
-            left: 10px;
-            font-size: 6rem;
-            color: rgba(255, 69, 0, 0.1);
-            font-family: Georgia, serif;
+            left: 0;
         }
-
-        /* Карточки с соцсетями */
+        
+        .album-release {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.1), rgba(255, 140, 0, 0.1));
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 2px dashed #ff4500;
+        }
+        
+        .album-title {
+            font-size: 2rem;
+            color: #ffcc00;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        /* Соцсети */
         .social-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-
+        
         .social-card {
-            background: linear-gradient(145deg, rgba(50, 50, 50, 0.95) 0%, rgba(30, 30, 30, 0.98) 100%);
-            border-radius: 14px;
-            padding: 2rem;
+            background: rgba(50, 50, 50, 0.8);
+            border-radius: 12px;
+            padding: 1.5rem;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-top: 4px solid;
             text-decoration: none;
-            display: block;
             color: inherit;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
+            border-top: 4px solid #ff4500;
         }
-        .social-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.7s ease;
-        }
-        .social-card:hover::before {
-            left: 100%;
-        }
-
+        
         .social-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(255, 69, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 69, 0, 0.3);
         }
-
-        .social-card.youtube { border-color: #FF0000; }
-        .social-card.twitch { border-color: #9146FF; }
-        .social-card.telegram { border-color: #26A5E4; }
-        .social-card.discord { border-color: #5865F2; }
-        .social-card.vk { border-color: #0077FF; }
-
-        .social-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.2rem;
-            transition: all 0.4s ease;
-        }
-        .social-card:hover .social-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-        .social-icon.youtube { color: #FF0000; text-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
-        .social-icon.twitch { color: #9146FF; text-shadow: 0 0 15px rgba(145, 70, 255, 0.5); }
-        .social-icon.telegram { color: #26A5E4; text-shadow: 0 0 15px rgba(38, 165, 228, 0.5); }
-        .social-icon.discord { color: #5865F2; text-shadow: 0 0 15px rgba(88, 101, 242, 0.5); }
-        .social-icon.vk { color: #0077FF; text-shadow: 0 0 15px rgba(0, 119, 255, 0.5); }
-
-        .social-card h3 {
-            color: #fff;
-            margin-bottom: 1rem;
-            font-size: 1.6rem;
-        }
-
-        .social-card p {
-            color: #bbb;
-        }
-
-        /* Кнопки подписчиков на YouTube */
-        .youtube-milestones {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 2.5rem;
-        }
-        .milestone-btn {
-            background: linear-gradient(45deg, #ff0000, #cc0000, #ff0000);
-            background-size: 200% 200%;
-            color: white;
-            border: none;
-            padding: 1.2rem 2.5rem;
-            font-size: 1.4rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            position: relative;
-            overflow: hidden;
-            min-width: 220px;
-            justify-content: center;
-        }
-        .milestone-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.7s ease;
-        }
-        .milestone-btn:hover::before {
-            left: 100%;
-        }
-        .milestone-btn:hover {
-            transform: translateY(-8px) scale(1.08);
-            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.6);
-            background-position: 100% 100%;
-        }
-        .milestone-btn .icon {
-            font-size: 1.8rem;
-        }
-
-        /* Карточки наград */
+        
+        /* Награды */
         .awards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
+        
         .award-card {
-            background: linear-gradient(145deg, rgba(70, 70, 70, 0.9) 0%, rgba(40, 40, 40, 0.95) 100%);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-        .award-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #ff4500, #ffcc00, #ff4500);
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite linear;
-        }
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        .award-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(255, 69, 0, 0.25);
-            border-color: rgba(255, 215, 0, 0.7);
-        }
-        .award-image {
-            width: 100%;
-            height: 220px;
-            object-fit: contain;
-            background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+            background: rgba(60, 60, 60, 0.8);
+            border-radius: 12px;
             padding: 1.5rem;
-            transition: transform 0.5s ease;
-        }
-        .award-card:hover .award-image {
-            transform: scale(1.05);
-        }
-        .award-content {
-            padding: 2rem;
-            background: rgba(30, 30, 30, 0.8);
-        }
-        .award-title {
-            color: #ffcc00;
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .award-years {
-            color: #ff4500;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            background: rgba(255, 69, 0, 0.15);
-            border-radius: 20px;
-        }
-
-        /* Цитата */
-        .quote {
-            font-size: 2rem;
-            font-style: italic;
             text-align: center;
-            padding: 4rem;
-            background: linear-gradient(135deg, rgba(255, 69, 0, 0.15) 0%, rgba(255, 69, 0, 0.05) 100%);
-            border-radius: 16px;
-            margin: 4rem 0;
-            border-left: none;
-            position: relative;
-            box-shadow: inset 0 0 30px rgba(255, 69, 0, 0.1);
-            border: 1px solid rgba(255, 69, 0, 0.2);
+            border: 2px solid rgba(255, 215, 0, 0.3);
         }
-
-        .quote:before, .quote:after {
-            font-size: 8rem;
-            color: rgba(255, 69, 0, 0.3);
-            position: absolute;
-            line-height: 1;
-        }
-        .quote:before {
-            content: "“";
-            top: 10px;
-            left: 30px;
-        }
-        .quote:after {
-            content: "”";
-            bottom: -30px;
-            right: 30px;
-        }
-
+        
         /* Футер */
         footer {
-            background: linear-gradient(to top, rgba(10, 10, 10, 0.98) 0%, rgba(20, 20, 20, 0.95) 100%);
-            padding: 4rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 3rem 0;
             text-align: center;
-            margin-top: 4rem;
+            margin-top: 3rem;
             border-top: 1px solid rgba(255, 69, 0, 0.4);
-            box-shadow: 0 -5px 30px rgba(255, 69, 0, 0.15);
-            position: relative;
         }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #ff4500, transparent);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .footer-logo {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #ff4500;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 20px rgba(255, 69, 0, 0.7);
-            background: linear-gradient(45deg, #ff4500, #ff8c00, #ff4500);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: logoShine 3s ease-in-out infinite alternate;
-        }
-
-        .copyright {
-            color: #aaa;
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .copyright.highlight {
-            color: #ffa500;
-            margin-top: 1rem;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
-        }
-
-        /* Анимации появления при скролле */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Адаптивность */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            .awards-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
+        
         @media (max-width: 768px) {
             .nav-container {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 1rem;
             }
-            .header-social {
-                order: 2;
-            }
+            
             .nav-menu {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 1rem;
             }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
-            .hero p {
-                font-size: 1.2rem;
-                padding: 1rem;
-            }
+            
             section {
                 padding: 2rem;
-            }
-            .social-cards {
-                grid-template-columns: 1fr;
-            }
-            .quote {
-                font-size: 1.6rem;
-                padding: 3rem 1.5rem;
-            }
-            .quote:before, .quote:after {
-                font-size: 5rem;
-            }
-            .quote:before {
-                left: 10px;
-            }
-            .quote:after {
-                right: 10px;
-            }
-            .youtube-milestones {
-                flex-direction: column;
-                align-items: center;
-            }
-            .milestone-btn {
-                width: 100%;
-                max-width: 300px;
             }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Шапка с навигацией -->
     <header>
         <nav>
             <div class="nav-container">
-                <div class="logo">B1G<span>PAPA</span></div>
+                <div class="logo">B1GPAPA</div>
                 <ul class="nav-menu">
                     <li><a href="#home">Главная</a></li>
                     <li><a href="#about">Кто он?</a></li>
                     <li><a href="#achievements">Достижения</a></li>
+                    <li><a href="#ratings">Рейтинги</a></li>
+                    <li><a href="#collabs">Коллаборации</a></li>
+                    <li><a href="#battles">Рэп-баттлы</a></li>
                     <li><a href="#social">Соцсети</a></li>
                     <li><a href="#awards">Награды</a></li>
-                    <li><a href="#story">История</a></li>
                 </ul>
-                <div class="header-social">
-                    <a href="https://www.twitch.tv/b1gpapaa_" target="_blank" title="Twitch"><i class="fab fa-twitch"></i></a>
-                    <a href="https://youtube.com/@b1gpapaa_" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://t.me/pohansk" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
-                </div>
             </div>
         </nav>
     </header>
-
-    <!-- Основной контент -->
+    
     <main class="container">
-        <section id="home" class="hero reveal">
+        <section id="home" class="hero">
             <h1>B1GPAPA - человек, который горел так сильно, что сгорел до тла</h1>
-            <p>Егор Первак, более известный как популярный стример на YouTube и Twitch. Этот сайт для его поклонников.</p>
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto; color: #ccc;">
+                Егор Первак, более известный как популярный стример на YouTube и Twitch. 
+                Этот сайт для его поклонников.
+            </p>
         </section>
-
-        <section id="about" class="reveal">
+        
+        <section id="about">
             <h2>Кто такой B1GPapa?</h2>
             <p>Егор Первак, известный в сети как B1GPapa (или Big Papa) — культовая личность русскоязычного сегмента интернета, стример, контентмейкер и медийная персона, чей контент стал символом целой эпохи в гейминге и стриминге.</p>
-
-            <div class="highlight">
+            
+            <div style="background: rgba(255, 69, 0, 0.1); padding: 1.5rem; border-radius: 10px; margin: 2rem 0; border-left: 4px solid #ff4500;">
                 <p>Его стиль — это смесь безудержного энтузиазма, искромётного юмора и полной самоотдачи процессу. Он не просто играл в игры — он проживал каждую игру, каждую победу и поражение, передавая свои эмоции тысячам зрителей.</p>
             </div>
-
-            <p>B1GPapa стал легендой не только благодаря игровому контенту, но и благодаря своему уникальному подходу к общению с аудиторией, искренности и способности создавать атмосферу, в которой каждый зритель чувствовал себя частью большого сообщества.</p>
         </section>
-
-        <section id="achievements" class="reveal">
+        
+        <section id="achievements">
             <h2>Достижения и влияние</h2>
             <p>B1GPapa оставил неизгладимый след в истории русскоязычного стриминга и создания игрового контента.</p>
-
-            <h3>Основные достижения и титулы:</h3>
+            
+            <h3 style="color: #ffa500; margin: 1.5rem 0 1rem;">Основные достижения и титулы:</h3>
             <ul style="color: #ddd; margin-left: 1.5rem; font-size: 1.1rem;">
-                <li style="margin-bottom: 0.8rem;"><strong>Пионер стриминга на русском языке</strong> — один из первых, кто показал потенциал live-контента для русскоязычной аудитории.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Создание уникального стиля</strong> — эмоциональный, заряженный, безгранично увлеченный процессом.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Формирование комьюнити</strong> — сплочение тысяч людей вокруг идеи искреннего, "настоящего" контента.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Влияние на культуру</strong> — многие его фразы и реакции стали мемами и частью интернет-культуры.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Вдохновение для нового поколения</strong> — множество современных стримеров называют B1GPapa своим вдохновителем.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Самый умный парень 2025 года</strong> — признание аналитического ума и эрудиции.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Лисятник года</strong> — народное признание харизмы и обаяния.</li>
+                <li style="margin-bottom: 0.8rem;"><strong>Пионер стриминга на русском языке</strong> — один из первых, кто показал потенциал live-контента</li>
+                <li style="margin-bottom: 0.8rem;"><strong>Создание уникального стиля</strong> — эмоциональный, заряженный, безгранично увлеченный</li>
+                <li style="margin-bottom: 0.8rem;"><strong>Формирование комьюнити</strong> — сплочение тысяч людей</li>
+                <li style="margin-bottom: 0.8rem;"><strong>Влияние на культуру</strong> — многие его фразы и реакции стали мемами</li>
+                <li style="margin-bottom: 0.8rem;"><strong>Самый умный парень 2025 года</strong> — признание аналитического ума</li>
+                <li style="margin-bottom: 0.8rem;"><strong>Лисятник года</strong> — народное признание харизмы и обаяния</li>
             </ul>
         </section>
-
-        <section id="awards" class="reveal">
-            <h2>Награды и премии</h2>
-            <p>Признание заслуг B1GPapa в мире стриминга и развлечений подтверждено престижными наградами.</p>
-
-            <div class="awards-grid">
-                <div class="award-card">
-                    <img src="https://slay-award.ru/images/photos/cup.png" alt="Кубок Slay Awards" class="award-image">
-                    <div class="award-content">
-                        <div class="award-title">Slay Awards</div>
-                        <div class="award-years">Победитель 2025</div>
-                        <p><strong>Slay King</strong> — главная номинация шоу.</p>
-                        <p><strong>Харизма года</strong></p>
-                        <p><strong>Завоз года</strong></p>
-                    </div>
+        
+        <section id="ratings">
+            <h2>Оценка деятельности и рейтинги</h2>
+            <p>За годы своей карьеры B1GPapa неоднократно отмечался в профессиональных рейтингах и исследованиях:</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2017</div>
+                    <p>Попал на 10-е место в рейтинге мировых игровых каналов от портала Fancensus.</p>
                 </div>
-
-                <div class="award-card">
-                    <img src="https://d1rldr9jdodfaa.cloudfront.net/images/01KBVP3YWFE4A4V3YCY5D51E53/5268a1c4-6262-4e0b-88a9-d03ffc790d23_1765086985.webp" alt="Статуэтка The Stream Awards" class="award-image">
-                    <div class="award-content">
-                        <div class="award-title">The Stream Awards</div>
-                        <div class="award-years">Победитель: 2023, 2024, 2025</div>
-                        <p><strong>Стример года</strong> — высшая награда индустрии.</p>
-                        <p><strong>Лучший стример (Игры и общение)</strong></p>
-                        <p>Трехкратный обладатель титула, что является уникальным достижением.</p>
-                    </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2019</div>
+                    <p>В рейтинге от Brand Analytics «ТОП-20 русскоязычных YouTube-блогеров» за июнь занял 16-е место.</p>
+                    <p>В сентябре поднялся на 12-е место в том же рейтинге.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <p>Вошел в «Топ-20 русскоязычных YouTube-блогеров» по версии Brand Analytics.</p>
+                    <p>В июне занял 24-е место в списке «Топ-30 блогеров в YouTube».</p>
+                </div>
+                
+                <div class="timeline-highlight">
+                    <div class="timeline-year">2021 - БРИЛЛИАНТОВАЯ КНОПКА</div>
+                    <p>20 февраля канал «b1gpapa» набрал 10 миллионов подписчиков! В июле того же года получил бриллиантовую кнопку от YouTube.</p>
+                    <p>В декабре: 14-е место в «Топ-20 каналов в YouTube за ноябрь 2021» и 18-е место в «Топ-20 каналов YouTube — 2021 год».</p>
+                    <p>По итогам года занял 8-ю позицию в рейтинге «Топ авторов» в России на YouTube.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <p>По итогам года: 9-е место в «Топ-20 каналов в YouTube», 24-е место в «Топ-30 инфлюенсеров», 3-е место в «Топ-20 блогеров VK».</p>
+                    <p>В журнале «Ойкумена» вышла статья, где по опросам подростков b1gpapa назван видеоблогером, «создающим приятную атмосферу для взаимодействия».</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <p>6-е место в «Топ-20 каналов в YouTube — 2023 год».</p>
+                    <p>Telegram-канал: 2-е место в «Топ-20 блогеров Telegram» и 5-е место в «Топ-30 каналов Telegram».</p>
                 </div>
             </div>
         </section>
-
-        <div class="quote reveal">
-            "Он горел так ярко, что освещал путь для тысяч других. Его пламя было настолько сильным, что сожгло само себя, оставив после лишь светлую память и легенды."
-        </div>
-
-        <section id="social" class="reveal">
+        
+        <section id="collabs">
+            <h2>Коллаборации</h2>
+            <p>За время карьеры B1GPapa сотрудничал с множеством известных личностей русскоязычного YouTube и рэп-сцены:</p>
+            
+            <div class="collab-cloud">
+                <div class="collab-tag main">Oxxxymiron</div>
+                <div class="collab-tag main">Kuplinov Play</div>
+                <div class="collab-tag">Слава КПСС</div>
+                <div class="collab-tag">Abbalbisck</div>
+                <div class="collab-tag">Иван Золо</div>
+                <div class="collab-tag">Моргенштерн</div>
+                <div class="collab-tag">Булкин Вписка</div>
+                <div class="collab-tag">Drago</div>
+                <div class="collab-tag">Замай</div>
+                <div class="collab-tag">ХХОС</div>
+                <div class="collab-tag">МЦ Похоронил</div>
+                <div class="collab-tag">Halloween</div>
+                <div class="collab-tag">VS94SKI</div>
+                <div class="collab-tag">Горизонт</div>
+                <div class="collab-tag">Династа</div>
+                <div class="collab-tag">Брол</div>
+                <div class="collab-tag">13/47</div>
+                <div class="collab-tag">и многие другие</div>
+            </div>
+        </section>
+        
+        <section id="battles">
+            <h2>Рэп-баттлы и музыка</h2>
+            <p>B1GPapa также известен своими выступлениями на рэп-баттл площадках и музыкальными релизами:</p>
+            
+            <div class="battle-highlights">
+                <h3 style="color: #9146FF;">Ключевые события:</h3>
+                <ul class="battle-list">
+                    <li><strong>2018</strong> - Баттл против 13/47 на RBL (читал с листка, раунды были вырезаны)</li>
+                    <li><strong>2018</strong> - Конфликт с Drago, избиение на квартире, позже трек "Исповедь" (2021)</li>
+                    <li><strong>2018</strong> - Проверка ЦЕНТРОМ "Э" песни со Славой КПСС и Замаем "Giger"</li>
+                    <li><strong>2019</strong> - Баттл с Бролом на RBL в леопардовом платье (перфоманс)</li>
+                    <li><strong>2020</strong> - Командный сезон Versus: TEAM+UP с ХХОС (победа в финале)</li>
+                    <li><strong>2020</strong> - Стрим со студенткой РАНГХиГС о коррупции (после проверки её исключили)</li>
+                </ul>
+            </div>
+            
+            <div class="album-release">
+                <div class="album-title">«Думайте сами»</div>
+                <p><strong>15 октября 2021 года</strong> - дебютный альбом под псевдонимом b1gpapa</p>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <h3 style="color: #ffcc00;">Победы на баттл-площадках:</h3>
+                <ul class="battle-list">
+                    <li><strong>2022</strong> - Победа на «Кубке МЦ» против VS94SKI (титул чемпиона)</li>
+                    <li><strong>2023</strong> - Защита титула на «Кубке МЦ» против Горизонта (победа)</li>
+                    <li><strong>2024</strong> - Баттл на «ЧСВ Battle» против Династа за звание чемпиона площадки (победа)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="social">
             <h2>Социальные сети и платформы</h2>
-            <p>Подпишитесь на официальные ресурсы B1GPapa, чтобы быть в курсе всего происходящего и не пропустить архивный контент:</p>
-
+            <p>Официальные ресурсы B1GPapa:</p>
+            
             <div class="social-cards">
-                <a href="https://www.twitch.tv/b1gpapaa_" target="_blank" class="social-card twitch">
-                    <div class="social-icon twitch">
+                <a href="https://www.twitch.tv/b1gpapaa_" target="_blank" class="social-card">
+                    <div style="font-size: 3rem; color: #9146FF; margin-bottom: 1rem;">
                         <i class="fab fa-twitch"></i>
                     </div>
                     <h3>Twitch</h3>
-                    <p>Основная платформа для легендарных стримов. Архивные записи и live-выступления.</p>
+                    <p>Основная платформа для стримов</p>
                 </a>
-
-                <a href="https://youtube.com/@b1gpapaa_" target="_blank" class="social-card youtube">
-                    <div class="social-icon youtube">
+                
+                <a href="https://youtube.com/@b1gpapaa_" target="_blank" class="social-card">
+                    <div style="font-size: 3rem; color: #FF0000; margin-bottom: 1rem;">
                         <i class="fab fa-youtube"></i>
                     </div>
                     <h3>YouTube</h3>
-                    <p>Главный канал с архивными записями стримов, лучшими моментами и уникальным контентом.</p>
+                    <p>Главный канал с архивными записями</p>
                 </a>
-
-                <a href="https://t.me/+I0vi14uCFcI5MzIy" target="_blank" class="social-card telegram">
-                    <div class="social-icon telegram">
+                
+                <a href="https://t.me/+I0vi14uCFcI5MzIy" target="_blank" class="social-card">
+                    <div style="font-size: 3rem; color: #26A5E4; margin-bottom: 1rem;">
                         <i class="fab fa-telegram"></i>
                     </div>
                     <h3>Telegram (основной)</h3>
-                    <p>Официальный канал для анонсов и общения.</p>
+                    <p>Официальный канал для анонсов</p>
                 </a>
-
-                <a href="https://discord.gg/h7ymnvfp4x" target="_blank" class="social-card discord">
-                    <div class="social-icon discord">
+                
+                <a href="https://discord.gg/h7ymnvfp4x" target="_blank" class="social-card">
+                    <div style="font-size: 3rem; color: #5865F2; margin-bottom: 1rem;">
                         <i class="fab fa-discord"></i>
                     </div>
                     <h3>Discord</h3>
-                    <p>Сервер сообщества для общения поклонников между собой в режиме реального времени.</p>
+                    <p>Сервер сообщества</p>
                 </a>
-
-                <a href="https://vk.com/xwyrq0" target="_blank" class="social-card vk">
-                    <div class="social-icon vk">
+                
+                <a href="https://vk.com/xwyrq0" target="_blank" class="social-card">
+                    <div style="font-size: 3rem; color: #0077FF; margin-bottom: 1rem;">
                         <i class="fab fa-vk"></i>
                     </div>
                     <h3>ВКонтакте</h3>
-                    <p>Группа поклонников, где делятся воспоминаниями, мемами и архивными материалами.</p>
+                    <p>Группа поклонников</p>
                 </a>
-
-                <a href="https://t.me/pohansk" target="_blank" class="social-card telegram">
-                    <div class="social-icon telegram">
+                
+                <a href="https://t.me/pohansk" target="_blank" class="social-card">
+                    <div style="font-size: 3rem; color: #26A5E4; margin-bottom: 1rem;">
                         <i class="fab fa-telegram"></i>
                     </div>
                     <h3>Telegram (для своих)</h3>
-                    <p>Закрытый канал для самого преданного ядра сообщества.</p>
+                    <p>Закрытый канал</p>
                 </a>
             </div>
-
-            <!-- Кнопки подписчиков на YouTube -->
+            
             <div style="text-align: center; margin-top: 3rem;">
                 <h3>Цели на YouTube</h3>
-                <p>Поддержите легенду, подписавшись на канал!</p>
-                <div class="youtube-milestones">
-                    <button class="milestone-btn">
-                        <span class="icon">🔥</span> 100К подписчиков
+                <div style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                    <button style="background: linear-gradient(45deg, #ff0000, #cc0000); color: white; border: none; padding: 1rem 2rem; font-weight: bold; border-radius: 50px; cursor: pointer;">
+                        🔥 100К подписчиков
                     </button>
-                    <button class="milestone-btn">
-                        <span class="icon">🏆</span> 1 МИЛЛИОН
+                    <button style="background: linear-gradient(45deg, #ff0000, #cc0000); color: white; border: none; padding: 1rem 2rem; font-weight: bold; border-radius: 50px; cursor: pointer;">
+                        🏆 1 МИЛЛИОН
                     </button>
-                    <button class="milestone-btn">
-                        <span class="icon">👑</span> 10 ЛЯМОВ!
+                    <button style="background: linear-gradient(45deg, #ff0000, #cc0000); color: white; border: none; padding: 1rem 2rem; font-weight: bold; border-radius: 50px; cursor: pointer;">
+                        👑 10 ЛЯМОВ!
                     </button>
                 </div>
-                <p style="margin-top: 1.5rem; color: #aaa; font-size: 0.95rem; font-style: italic;">Каждая кнопка — новая веха в истории канала. Нажмите, чтобы зарядиться энергией легенды!</p>
             </div>
         </section>
-
-        <section id="story" class="reveal">
-            <h2>История феномена B1GPapa</h2>
-            <p>Феномен B1GPapa сложно описать стандартными терминами. Это была не просто карьера стримера — это была жизнь, прожитая на глазах у тысяч людей, с полной самоотдачей и эмоциональной вовлеченностью.</p>
-
-            <p>Егор Первак не просто играл в игры — он полностью погружался в игровые миры, проживая каждую историю, каждое сражение, каждую победу и поражение вместе со своей аудиторией. Его реакция была настолько искренней и неподдельной, что зрители чувствовали себя не просто наблюдателями, а участниками происходящего.</p>
-
-            <div class="highlight">
-                <p>Именно эта полная самоотдача, это "горение" процессом и стало как его величайшей силой, так и причиной того, что его активная карьера была яркой, но недолгой. Он отдавал всего себя контенту, не оставляя ничего "про запас".</p>
+        
+        <section id="awards">
+            <h2>Награды и премии</h2>
+            
+            <div class="awards-grid">
+                <div class="award-card">
+                    <h3 style="color: #ffcc00;">Slay Awards 2025</h3>
+                    <p><strong>Slay King</strong> — главная номинация</p>
+                    <p><strong>Харизма года</strong></p>
+                    <p><strong>Завоз года</strong></p>
+                </div>
+                
+                <div class="award-card">
+                    <h3 style="color: #ffcc00;">The Stream Awards</h3>
+                    <p><strong>Стример года:</strong> 2023, 2024, 2025</p>
+                    <p><strong>Лучший стример (Игры и общение)</strong></p>
+                    <p>Трехкратный обладатель титула</p>
+                </div>
             </div>
-
-            <p>Сегодня B1GPapa — это легенда, символ целой эпохи в развитии русскоязычного стриминга. Его наследие продолжает вдохновлять новых создателей контента, а архивные записи его стримов продолжают собирать просмотры, напоминая о том, каким эмоциональным, искренним и увлекательным может быть игровой контент.</p>
         </section>
     </main>
-
-    <!-- Футер -->
+    
     <footer>
-        <div class="footer-content">
-            <div class="footer-logo">B1GPAPA</div>
-            <p class="copyright">Сайт создан поклонниками в память о легендарном стримере. B1GPapa навсегда в наших сердцах. © 2023-2025</p>
-            <p class="copyright highlight">"Человек, который горел так сильно, что сгорел до тла"</p>
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div style="font-size: 2rem; font-weight: 900; color: #ff4500; margin-bottom: 1.5rem;">
+                B1GPAPA
+            </div>
+            <p style="color: #aaa;">
+                Сайт создан поклонниками в память о легендарном стримере. B1GPapa навсегда в наших сердцах. © 2023-2025
+            </p>
+            <p style="color: #ff4500; margin-top: 1rem; font-weight: bold;">
+                "Человек, который горел так сильно, что сгорел до тла"
+            </p>
         </div>
     </footer>
-
+    
     <script>
-        // Плавная прокрутка по клику на пункты меню
-        document.querySelectorAll('.nav-menu a, .header-social a').forEach(link => {
+        // Плавная прокрутка
+        document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', function(e) {
-                if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Анимация появления элементов при скролле
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealOnScroll = () => {
-            const windowHeight = window.innerHeight;
-            const revealPoint = 150;
-
-            revealElements.forEach(element => {
-                const revealTop = element.getBoundingClientRect().top;
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
                 
-                if (revealTop < windowHeight - revealPoint) {
-                    element.classList.add('active');
-                } else {
-                    // Не удаляем класс, чтобы анимация сработала только один раз
-                }
-            });
-        };
-
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
-
-        // Динамическое изменение фона шапки при скролле
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'linear-gradient(to bottom, rgba(10, 10, 10, 0.98) 0%, rgba(5, 5, 5, 0.95) 100%)';
-            } else {
-                header.style.background = 'linear-gradient(to bottom, rgba(20, 20, 20, 0.98) 0%, rgba(10, 10, 10, 0.92) 100%)';
-            }
-        });
-
-        // Эффект для карточек соцсетей и наград
-        document.querySelectorAll('.social-card, .award-card, .milestone-btn').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.zIndex = '10';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.zIndex = '1';
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
             });
         });
-
-        // Анимация нажатия на кнопки YouTube
-        document.querySelectorAll('.milestone-btn').forEach(btn => {
+        
+        // Анимация кнопок YouTube
+        document.querySelectorAll('button').forEach(btn => {
             btn.addEventListener('click', function() {
-                this.style.transform = 'translateY(-4px) scale(1.05)';
-                this.style.boxShadow = '0 20px 35px rgba(255, 0, 0, 0.7)';
-                
+                this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
-                    this.style.transform = 'translateY(-8px) scale(1.08)';
-                    this.style.boxShadow = '0 15px 30px rgba(255, 0, 0, 0.6)';
+                    this.style.transform = 'scale(1)';
                 }, 150);
-                
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-8px) scale(1.08)';
-                    // В реальном сайте здесь может быть ссылка на YouTube
-                    // window.open('https://youtube.com/@b1gpapaa_', '_blank');
-                }, 300);
             });
-        });
-
-        // Параллакс-эффект для фона
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('body::before');
-            if (parallax && parallax.style) {
-                parallax.style.transform = `translateY(${scrolled * 0.05}px)`;
-            }
         });
     </script>
 </body>
