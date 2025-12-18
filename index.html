@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B1GPapa - Человек, который горел так сильно, что сгорел до тла</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Фоновая картинка */
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            z-index: -1;
+        }
+        
+        /* Шапка и навигация */
+        header {
+            background-color: rgba(20, 20, 20, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+            border-bottom: 2px solid #ff4500;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ff4500;
+            text-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: #fff;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            background-color: #ff4500;
+            color: #000;
+        }
+        
+        /* Основной контент */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #ff4500;
+            text-shadow: 0 0 15px rgba(255, 69, 0, 0.7);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #ccc;
+        }
+        
+        /* Секции */
+        section {
+            background-color: rgba(30, 30, 30, 0.85);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            border-left: 5px solid #ff4500;
+        }
+        
+        h2 {
+            color: #ff4500;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            color: #ffa500;
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+        
+        .highlight {
+            background-color: rgba(255, 69, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ff4500;
+            margin: 2rem 0;
+        }
+        
+        /* Карточки с соцсетями */
+        .social-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .social-card {
+            background-color: rgba(40, 40, 40, 0.9);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 3px solid #ff4500;
+        }
+        
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(255, 69, 0, 0.2);
+        }
+        
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ff4500;
+        }
+        
+        .social-card h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        
+        .social-card p {
+            color: #aaa;
+        }
+        
+        /* Цитата */
+        .quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            text-align: center;
+            padding: 3rem;
+            background-color: rgba(255, 69, 0, 0.1);
+            border-radius: 12px;
+            margin: 3rem 0;
+            border-left: none;
+            position: relative;
+        }
+        
+        .quote:before {
+            content: "“";
+            font-size: 6rem;
+            color: rgba(255, 69, 0, 0.3);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+        }
+        
+        .quote:after {
+            content: "”";
+            font-size: 6rem;
+            color: rgba(255, 69, 0, 0.3);
+            position: absolute;
+            bottom: -40px;
+            right: 20px;
+        }
+        
+        /* Футер */
+        footer {
+            background-color: rgba(10, 10, 10, 0.95);
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 2px solid #ff4500;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ff4500;
+            margin-bottom: 1.5rem;
+        }
+        
+        .copyright {
+            color: #777;
+            font-size: 1rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 2rem;
+            }
+            
+            .social-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote {
+                font-size: 1.4rem;
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Фоновое изображение -->
+    <div class="background-image"></div>
+    
+    <!-- Шапка с навигацией -->
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">B1G<span>PAPA</span></div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">Кто он?</a></li>
+                    <li><a href="#achievements">Достижения</a></li>
+                    <li><a href="#social">Соцсети</a></li>
+                    <li><a href="#story">История</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Основной контент -->
+    <main class="container">
+        <section id="home" class="hero">
+            <h1>B1GPAPA - человек, который горел так сильно, что сгорел до тла</h1>
+            <p>Егор Первак, более известный как популярный стример на YouTube и Twitch. Этот сайт для его поклонников.</p>
+        </section>
+        
+        <section id="about">
+            <h2>Кто такой B1GPapa?</h2>
+            <p>Егор Первак, известный в сети как B1GPapa (или Big Papa) — культовая личность русскоязычного сегмента интернета, стример, контентмейкер и медийная персона, чей контент стал символом целой эпохи в гейминге и стриминге.</p>
+            
+            <div class="highlight">
+                <p>Его стиль — это смесь безудержного энтузиазма, искромётного юмора и полной самоотдачи процессу. Он не просто играл в игры — он проживал каждую игру, каждую победу и поражение, передавая свои эмоции тысячам зрителей.</p>
+            </div>
+            
+            <p>B1GPapa стал легендой не только благодаря игровому контенту, но и благодаря своему уникальному подходу к общению с аудиторией, искренности и способности создавать атмосферу, в которой каждый зритель чувствовал себя частью большого сообщества.</p>
+        </section>
+        
+        <section id="achievements">
+            <h2>Достижения и влияние</h2>
+            <p>B1GPapa оставил неизгладимый след в истории русскоязычного стриминга и создания игрового контента.</p>
+            
+            <h3>Основные достижения:</h3>
+            <ul>
+                <li><strong>Пионер стриминга на русском языке</strong> — один из первых, кто показал потенциал live-контента для русскоязычной аудитории</li>
+                <li><strong>Создание уникального стиля</strong> — эмоциональный, заряженный, безгранично увлеченный процессом</li>
+                <li><strong>Формирование комьюнити</strong> — сплочение тысяч людей вокруг идеи искреннего, "настоящего" контента</li>
+                <li><strong>Влияние на культуру</strong> — многие его фразы и реакции стали мемами и частью интернет-культуры</li>
+                <li><strong>Вдохновение для нового поколения</strong> — множество современных стримеров называют B1GPapa своим вдохновителем</li>
+            </ul>
+        </section>
+        
+        <div class="quote">
+            "Он горел так ярко, что освещал путь для тысяч других. Его пламя было настолько сильным, что сожгло само себя, оставив после лишь светлую память и легенды."
+        </div>
+        
+        <section id="social">
+            <h2>Социальные сети и платформы</h2>
+            <p>Хотя активная деятельность B1GPapa уже в прошлом, его наследие продолжает жить на различных платформах:</p>
+            
+            <div class="social-cards">
+                <div class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>Архивные записи стримов и контента, который продолжает собирать просмотры и комментарии благодарных зрителей.</p>
+                </div>
+                
+                <div class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-twitch"></i>
+                    </div>
+                    <h3>Twitch</h3>
+                    <p>Платформа, где B1GPapa проводил свои легендарные стримы, создавая ту самую атмосферу, которую ценят поклонники.</p>
+                </div>
+                
+                <div class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-vk"></i>
+                    </div>
+                    <h3>ВКонтакте</h3>
+                    <p>Сообщество поклонников, где до сих пор делятся воспоминаниями, мемами и архивными материалами.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="story">
+            <h2>История феномена B1GPapa</h2>
+            <p>Феномен B1GPapa сложно описать стандартными терминами. Это была не просто карьера стримера — это была жизнь, прожитая на глазах у тысяч людей, с полной самоотдачей и эмоциональной вовлеченностью.</p>
+            
+            <p>Егор Первак не просто играл в игры — он полностью погружался в игровые миры, проживая каждую историю, каждое сражение, каждую победу и поражение вместе со своей аудиторией. Его реакция была настолько искренней и неподдельной, что зрители чувствовали себя не просто наблюдателями, а участниками происходящего.</p>
+            
+            <div class="highlight">
+                <p>Именно эта полная самоотдача, это "горение" процессом и стало как его величайшей силой, так и причиной того, что его активная карьера была яркой, но недолгой. Он отдавал всего себя контенту, не оставляя ничего "про запас".</p>
+            </div>
+            
+            <p>Сегодня B1GPapa — это легенда, символ целой эпохи в развитии русскоязычного стриминга. Его наследие продолжает вдохновлять новых создателей контента, а архивные записи его стримов продолжают собирать просмотры, напоминая о том, каким эмоциональным, искренним и увлекательным может быть игровой контент.</p>
+        </section>
+    </main>
+    
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">B1GPAPA</div>
+            <p class="copyright">Сайт создан поклонниками в память о легендарном стримере. B1GPapa навсегда в наших сердцах. © 2023</p>
+            <p class="copyright" style="margin-top: 1rem; color: #ff4500; font-size: 0.9rem;">"Человек, который горел так сильно, что сгорел до тла"</p>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка по клику на пункты меню
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Динамическое изменение фона шапки при скролле
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                header.style.backgroundColor = 'rgba(20, 20, 20, 0.95)';
+            }
+        });
+        
+        // Эффект для карточек соцсетей
+        document.querySelectorAll('.social-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
