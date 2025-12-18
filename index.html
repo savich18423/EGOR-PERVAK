@@ -3,1751 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B1GPAPA | ИКОНА ПОКОЛЕНИЯ</title>
+    <title>B1GPAPA | ЛЕГЕНДА РУНЕТА</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Russo+One&family=Montserrat:wght@300;400;600;700;800&family=Exo+2:wght@900&family=Bebas+Neue&family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Russo+One&family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ==================== ГЛОБАЛЬНЫЕ НАСТРОЙКИ ==================== */
+        /* ====== СБРОС И БАЗА ====== */
         :root {
-            /* ЦВЕТОВАЯ ПАЛИТРА */
-            --fire-red: #ff0000;
-            --fire-orange: #ff4500;
-            --fire-yellow: #ff8c00;
-            --fire-gold: #ffd700;
-            --neon-cyan: #00f3ff;
-            --neon-purple: #b967ff;
-            --neon-pink: #ff00ff;
-            --dark-1: #0a0a0a;
-            --dark-2: #1a1a1a;
-            --dark-3: #2a2a2a;
-            --dark-4: #333333;
-            
-            /* ГРАДИЕНТЫ */
-            --fire-gradient: linear-gradient(45deg, var(--fire-red), var(--fire-orange), var(--fire-yellow), var(--fire-gold));
-            --neon-gradient: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
-            --dark-gradient: linear-gradient(45deg, var(--dark-1), var(--dark-2), var(--dark-3));
-            --plasma-gradient: linear-gradient(45deg, 
-                #ff0000, #ff4500, #ff8c00, #ffd700,
-                #ff8c00, #ff4500, #ff0000
-            );
-            
-            /* ТЕНИ И СВЕЧЕНИЯ */
-            --fire-glow: 0 0 40px rgba(255, 69, 0, 0.8), 
-                         0 0 80px rgba(255, 69, 0, 0.6),
-                         0 0 120px rgba(255, 69, 0, 0.4);
-            --neon-glow: 0 0 30px rgba(0, 243, 255, 0.7),
-                         0 0 60px rgba(185, 103, 255, 0.5);
-            --gold-glow: 0 0 50px rgba(255, 215, 0, 0.5);
-            
-            /* АНИМАЦИИ */
-            --animation-fast: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --animation-medium: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            --animation-slow: 1s cubic-bezier(0.4, 0, 0.2, 1);
-            
-            /* РАЗМЕРЫ */
-            --header-height: 100px;
-            --section-padding: 150px;
-            --container-width: 1600px;
-            --border-radius: 25px;
+            --fire: linear-gradient(45deg, #ff0000, #ff4500, #ff8c00, #ffd700);
+            --fire-glow: 0 0 30px rgba(255, 69, 0, 0.7), 0 0 60px rgba(255, 69, 0, 0.5), 0 0 90px rgba(255, 69, 0, 0.3);
+            --neon: #00ffea;
+            --gold: #ffd700;
+            --dark: #0a0a0a;
+            --dark-light: #1a1a1a;
+            --accent: #ff4500;
+            --accent-glow: 0 0 20px rgba(255, 69, 0, 0.6);
         }
         
-        /* ==================== СБРОС И БАЗОВЫЕ СТИЛИ ==================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-tap-highlight-color: transparent;
         }
         
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: var(--header-height);
-            overflow-x: hidden;
-            font-size: 16px;
+            scroll-padding-top: 100px;
         }
         
         body {
-            background: var(--dark-1);
+            background: var(--dark);
             color: white;
-            font-family: 'Montserrat', 'Exo 2', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             min-height: 100vh;
-            line-height: 1.6;
-            position: relative;
-            background: 
-                radial-gradient(ellipse at 20% 30%, #1a0000 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, #330000 0%, transparent 50%),
-                var(--dark-1);
+            background: radial-gradient(circle at 20% 30%, #1a0000 0%, #0a0a0a 50%);
             background-attachment: fixed;
         }
         
-        /* ==================== СКРОЛЛБАР ==================== */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--dark-2);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--fire-gradient);
-            border-radius: 6px;
-            border: 3px solid var(--dark-2);
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--plasma-gradient);
-        }
-        
-        /* ==================== ОПТИМИЗАЦИЯ ДЛЯ ВЫСОКОГО FPS ==================== */
-        .gpu-accelerated {
-            transform: translate3d(0, 0, 0);
-            backface-visibility: hidden;
-            perspective: 1000px;
-            will-change: transform, opacity;
-        }
-        
-        .smooth-transition {
-            transition: all var(--animation-medium);
-        }
-        
-        /* ==================== ПАРАЛЛАКС ФОН ==================== */
-        .parallax-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        
-        .parallax-layer {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            animation: parallax-rotate 120s linear infinite;
-            opacity: 0.1;
-        }
-        
-        .parallax-layer-1 {
-            background: 
-                radial-gradient(circle at 30% 30%, var(--fire-red) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, var(--fire-orange) 0%, transparent 50%);
-            filter: blur(60px);
-            animation-duration: 80s;
-        }
-        
-        .parallax-layer-2 {
-            background: 
-                repeating-linear-gradient(45deg, 
-                    transparent, 
-                    transparent 50px, 
-                    rgba(255, 69, 0, 0.1) 50px, 
-                    rgba(255, 69, 0, 0.1) 100px
-                );
-            filter: blur(20px);
-            animation-duration: 60s;
-            animation-direction: reverse;
-        }
-        
-        .parallax-layer-3 {
-            background: 
-                radial-gradient(circle at 50% 50%, 
-                    rgba(255, 215, 0, 0.05) 0%, 
-                    transparent 70%
-                );
-            filter: blur(100px);
-            animation-duration: 100s;
-        }
-        
-        @keyframes parallax-rotate {
-            0% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-            100% { transform: translate(-50%, -50%) rotate(360deg) scale(1.1); }
-        }
-        
-        /* ==================== АНИМИРОВАННЫЙ ФОН С ЧАСТИЦАМИ ==================== */
-        .particles-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .particle {
-            position: absolute;
-            background: var(--fire-gradient);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particle-float 20s infinite linear;
-        }
-        
-        @keyframes particle-float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
+        /* ====== ДЛЯ ПК/НОУТА ====== */
+        @media (min-width: 1025px) {
+            /* КРУТЫЙ КУРСОР ТОЛЬКО ДЛЯ ПК */
+            .cursor-dot {
+                width: 8px;
+                height: 8px;
+                background: var(--accent);
+                border-radius: 50%;
+                position: fixed;
+                pointer-events: none;
+                z-index: 9999;
+                mix-blend-mode: screen;
+                transition: transform 0.2s;
             }
-            10% {
-                opacity: 0.3;
+            
+            .cursor-ring {
+                width: 40px;
+                height: 40px;
+                border: 2px solid rgba(255, 69, 0, 0.5);
+                border-radius: 50%;
+                position: fixed;
+                pointer-events: none;
+                z-index: 9998;
+                transition: all 0.3s;
+                mix-blend-mode: screen;
             }
-            90% {
-                opacity: 0.3;
+            
+            /* БОЛЬШАЯ ШАПКА */
+            header {
+                height: 100px;
+                padding: 0;
             }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
+            
+            .nav-container {
+                height: 100px;
             }
-        }
-        
-        /* ==================== ШАПКА С ГЛИТЧ-ЭФФЕКТОМ ==================== */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--header-height);
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.92);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border-bottom: 1px solid rgba(255, 69, 0, 0.15);
-            transition: all var(--animation-medium);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        header.scrolled {
-            height: 80px;
-            background: rgba(5, 5, 5, 0.98);
-            border-bottom: 1px solid rgba(255, 69, 0, 0.3);
-            box-shadow: 0 15px 50px rgba(255, 69, 0, 0.1);
-        }
-        
-        .nav-container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 40px;
-            height: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        /* ЛОГОТИП С ЭФФЕКТОМ ИСКР */
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 2.8rem;
-            background: var(--plasma-gradient);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: var(--fire-glow);
-            letter-spacing: 3px;
-            position: relative;
-            display: inline-block;
-            animation: logo-shimmer 8s ease infinite, logo-float 6s ease-in-out infinite;
-            padding: 10px 20px;
-            border-radius: 15px;
-            overflow: hidden;
-        }
-        
-        .logo::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.1), 
-                transparent
-            );
-            animation: logo-scan 3s infinite;
-        }
-        
-        @keyframes logo-shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        @keyframes logo-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        @keyframes logo-scan {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
-        /* НАВИГАЦИЯ С НЕОН-ЭФФЕКТОМ */
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 5px;
-        }
-        
-        .nav-link {
-            position: relative;
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            padding: 15px 30px;
-            border-radius: 50px;
-            overflow: hidden;
-            transition: all var(--animation-medium);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 69, 0, 0.1);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 69, 0, 0.3), 
-                transparent
-            );
-            transition: left 0.8s;
-        }
-        
-        .nav-link:hover::before {
-            left: 100%;
-        }
-        
-        .nav-link:hover {
-            background: linear-gradient(45deg, 
-                rgba(255, 0, 0, 0.9), 
-                rgba(255, 69, 0, 0.9)
-            );
-            color: black;
-            transform: translateY(-5px);
-            box-shadow: var(--fire-glow);
-            border-color: transparent;
-        }
-        
-        .nav-link.active {
-            background: linear-gradient(45deg, 
-                var(--fire-red), 
-                var(--fire-orange)
-            );
-            color: black;
-            box-shadow: var(--fire-glow);
-            animation: nav-pulse 2s infinite;
-        }
-        
-        .nav-icon {
-            font-size: 1.2rem;
-            transition: transform var(--animation-fast);
-        }
-        
-        .nav-link:hover .nav-icon {
-            transform: rotate(15deg) scale(1.2);
-        }
-        
-        @keyframes nav-pulse {
-            0%, 100% { box-shadow: var(--fire-glow); }
-            50% { box-shadow: 0 0 60px rgba(255, 69, 0, 0.9); }
-        }
-        
-        /* БУРГЕР ДЛЯ МОБИЛЬНОЙ ВЕРСИИ */
-        .burger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 15px;
-            background: rgba(255, 69, 0, 0.1);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 69, 0, 0.3);
-        }
-        
-        .burger span {
-            width: 30px;
-            height: 3px;
-            background: var(--fire-orange);
-            margin: 4px 0;
-            transition: var(--animation-medium);
-            border-radius: 2px;
-        }
-        
-        .burger.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-6px, 8px);
-        }
-        
-        .burger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .burger.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-6px, -8px);
-        }
-        
-        /* ==================== ГЛАВНЫЙ ГЕРОЙ С ЭФФЕКТОМ ВЗРЫВА ==================== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: var(--header-height);
-            background: 
-                radial-gradient(ellipse at 50% 30%, 
-                    rgba(255, 0, 0, 0.1) 0%, 
-                    transparent 60%),
-                radial-gradient(ellipse at 80% 80%, 
-                    rgba(255, 69, 0, 0.05) 0%, 
-                    transparent 50%);
-        }
-        
-        .hero-explosion {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: var(--plasma-gradient);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: explosion 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            z-index: -1;
-        }
-        
-        @keyframes explosion {
-            0% {
-                width: 0;
-                height: 0;
-                opacity: 1;
-                filter: blur(0);
+            
+            .logo {
+                font-size: 2.8rem;
+                letter-spacing: 3px;
             }
-            100% {
-                width: 200vw;
-                height: 200vw;
-                opacity: 0;
-                filter: blur(100px);
+            
+            .nav-menu {
+                gap: 10px;
             }
-        }
-        
-        .hero-content {
-            text-align: center;
-            z-index: 2;
-            padding: 0 40px;
-            max-width: 1400px;
-            animation: content-appear 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s both;
-        }
-        
-        @keyframes content-appear {
-            0% {
-                opacity: 0;
-                transform: translateY(50px) scale(0.9);
+            
+            .nav-link {
+                padding: 15px 30px;
+                font-size: 1.1rem;
             }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        
-        .hero-title {
-            font-family: 'Orbitron', 'Anton', sans-serif;
-            font-weight: 900;
-            font-size: 6.5rem;
-            margin-bottom: 40px;
-            background: var(--plasma-gradient);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: var(--fire-glow);
-            line-height: 1;
-            letter-spacing: 4px;
-            animation: 
-                title-fire 3s infinite alternate,
-                title-float 8s ease-in-out infinite,
-                title-shimmer 12s infinite;
-            position: relative;
-        }
-        
-        .hero-title::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 4px;
-            background: var(--fire-gradient);
-            border-radius: 2px;
-            animation: title-underline 3s infinite alternate;
-        }
-        
-        @keyframes title-fire {
-            0% { 
-                filter: 
-                    drop-shadow(0 0 10px rgba(255, 0, 0, 0.7))
-                    drop-shadow(0 0 20px rgba(255, 69, 0, 0.5));
-            }
-            100% { 
-                filter: 
-                    drop-shadow(0 0 20px rgba(255, 0, 0, 0.9))
-                    drop-shadow(0 0 40px rgba(255, 69, 0, 0.7))
-                    drop-shadow(0 0 60px rgba(255, 69, 0, 0.5));
-            }
-        }
-        
-        @keyframes title-shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        @keyframes title-float {
-            0%, 100% { transform: translateY(0) rotateX(0); }
-            50% { transform: translateY(-30px) rotateX(5deg); }
-        }
-        
-        @keyframes title-underline {
-            0% { width: 300px; opacity: 0.7; }
-            100% { width: 500px; opacity: 1; }
-        }
-        
-        .hero-subtitle {
-            font-size: 2.2rem;
-            margin-bottom: 60px;
-            color: rgba(255, 255, 255, 0.95);
-            max-width: 1000px;
-            margin: 0 auto 60px;
-            line-height: 1.6;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
-            font-weight: 300;
-            animation: subtitle-appear 1s ease 1s both;
-        }
-        
-        @keyframes subtitle-appear {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* СТАТИСТИКА С 3D ЭФФЕКТОМ */
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 80px;
-            margin-top: 80px;
-            flex-wrap: wrap;
-            perspective: 1000px;
-        }
-        
-        .stat-item {
-            text-align: center;
-            transform-style: preserve-3d;
-            animation: stat-appear 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
-            animation-delay: calc(var(--i) * 0.2s);
-        }
-        
-        .stat-item:nth-child(1) { --i: 1; }
-        .stat-item:nth-child(2) { --i: 2; }
-        .stat-item:nth-child(3) { --i: 3; }
-        .stat-item:nth-child(4) { --i: 4; }
-        
-        @keyframes stat-appear {
-            0% {
-                opacity: 0;
-                transform: translateY(50px) rotateX(90deg) scale(0.5);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) rotateX(0) scale(1);
-            }
-        }
-        
-        .stat-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 5rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--fire-gold), var(--fire-yellow));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1;
-            margin-bottom: 15px;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .stat-number::after {
-            content: attr(data-count);
-            position: absolute;
-            top: 0;
-            left: 0;
-            background: linear-gradient(45deg, var(--fire-red), var(--fire-orange));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: blur(10px);
-            opacity: 0.5;
-            z-index: -1;
-        }
-        
-        .stat-label {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 600;
-            background: rgba(255, 69, 0, 0.1);
-            padding: 10px 20px;
-            border-radius: 50px;
-            display: inline-block;
-        }
-        
-        /* КНОПКА ПРОКРУТКИ */
-        .scroll-down {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.5rem;
-            animation: scroll-bounce 2s infinite;
-            cursor: pointer;
-            z-index: 10;
-            background: rgba(255, 69, 0, 0.1);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(255, 69, 0, 0.3);
-            transition: var(--animation-medium);
-        }
-        
-        .scroll-down:hover {
-            background: rgba(255, 69, 0, 0.2);
-            color: var(--fire-gold);
-            transform: translateX(-50%) scale(1.1);
-            box-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
-        }
-        
-        @keyframes scroll-bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-20px); }
-            60% { transform: translateX(-50%) translateY(-10px); }
-        }
-        
-        /* ==================== ОСНОВНЫЕ СЕКЦИИ ==================== */
-        .section {
-            padding: var(--section-padding) 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, 
-                transparent 0%, 
-                rgba(255, 69, 0, 0.03) 50%, 
-                transparent 100%
-            );
-            z-index: -1;
-            animation: section-bg 20s infinite linear;
-        }
-        
-        @keyframes section-bg {
-            0% { transform: translateX(-100%) translateY(-100%); }
-            100% { transform: translateX(100%) translateY(100%); }
-        }
-        
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-        
-        .section-title {
-            font-family: 'Orbitron', 'Bebas Neue', sans-serif;
-            font-size: 4.5rem;
-            text-align: center;
-            margin-bottom: 100px;
-            position: relative;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            animation: title-reveal 1s cubic-bezier(0.4, 0, 0.2, 1) both;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 8px;
-            background: var(--fire-gradient);
-            border-radius: 8px;
-            box-shadow: var(--fire-glow);
-            animation: title-line 3s infinite alternate;
-        }
-        
-        @keyframes title-reveal {
-            0% {
-                opacity: 0;
-                transform: translateY(50px) scale(0.9);
-                letter-spacing: 20px;
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-                letter-spacing: 5px;
-            }
-        }
-        
-        @keyframes title-line {
-            0% { 
-                width: 200px;
-                filter: hue-rotate(0deg);
-            }
-            100% { 
-                width: 300px;
-                filter: hue-rotate(360deg);
-            }
-        }
-        
-        /* ==================== НЕЙМОРФНЫЕ КАРТОЧКИ ==================== */
-        .card {
-            background: rgba(30, 30, 30, 0.4);
-            border-radius: var(--border-radius);
-            padding: 60px;
-            margin-bottom: 60px;
-            border: 1px solid rgba(255, 69, 0, 0.2);
-            backdrop-filter: blur(20px);
-            transition: all var(--animation-medium);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 
-                20px 20px 60px rgba(0, 0, 0, 0.5),
-                -20px -20px 60px rgba(255, 69, 0, 0.05);
-            animation: card-appear 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
-        }
-        
-        @keyframes card-appear {
-            0% {
-                opacity: 0;
-                transform: translateY(50px) rotateX(10deg);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) rotateX(0);
-            }
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--plasma-gradient);
-            opacity: 0;
-            transition: opacity var(--animation-medium);
-            z-index: -1;
-            filter: blur(20px);
-        }
-        
-        .card:hover::before {
-            opacity: 0.1;
-        }
-        
-        .card:hover {
-            transform: translateY(-20px) scale(1.02);
-            box-shadow: 
-                30px 30px 80px rgba(0, 0, 0, 0.6),
-                -30px -30px 80px rgba(255, 69, 0, 0.1),
-                inset 0 0 100px rgba(255, 69, 0, 0.05);
-            border-color: rgba(255, 69, 0, 0.5);
-        }
-        
-        .card-title {
-            font-size: 2.8rem;
-            margin-bottom: 40px;
-            color: var(--fire-gold);
-            font-family: 'Orbitron', sans-serif;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-            position: relative;
-            display: inline-block;
-            animation: card-title-glow 3s infinite alternate;
-        }
-        
-        @keyframes card-title-glow {
-            0% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
-            100% { text-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
-        }
-        
-        .card-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--fire-gradient);
-            border-radius: 2px;
-            animation: card-underline 3s infinite;
-        }
-        
-        @keyframes card-underline {
-            0%, 100% { width: 100%; transform: scaleX(1); }
-            50% { width: 50%; transform: scaleX(0.5); transform-origin: center; }
-        }
-        
-        /* ==================== ТАЙМЛАЙН С ЭФФЕКТОМ ВРЕМЕННОЙ ЛИНИИ ==================== */
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 100px auto;
-            padding: 50px 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 6px;
-            background: var(--fire-gradient);
-            transform: translateX(-50%);
-            box-shadow: var(--fire-glow);
-            animation: timeline-pulse 3s infinite;
-            border-radius: 3px;
-        }
-        
-        @keyframes timeline-pulse {
-            0%, 100% { 
-                opacity: 1;
-                box-shadow: var(--fire-glow);
-            }
-            50% { 
-                opacity: 0.5;
-                box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
-            }
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 100px;
-            width: 45%;
-            opacity: 0;
-            transform: translateY(50px) scale(0.9);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 55%;
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            top: 20px;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--plasma-gradient);
-            box-shadow: var(--fire-glow);
-            animation: timeline-dot-pulse 2s infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-        }
-        
-        .timeline-dot::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            border-radius: inherit;
-            animation: timeline-dot-ripple 2s infinite;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-dot {
-            right: -75px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: -75px;
-        }
-        
-        @keyframes timeline-dot-pulse {
-            0%, 100% { 
-                transform: scale(1);
-                box-shadow: var(--fire-glow);
-            }
-            50% { 
-                transform: scale(1.3);
-                box-shadow: 0 0 50px rgba(255, 69, 0, 0.8);
-            }
-        }
-        
-        @keyframes timeline-dot-ripple {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-        
-        .timeline-year {
-            position: absolute;
-            top: -15px;
-            background: var(--plasma-gradient);
-            color: black;
-            padding: 12px 30px;
-            border-radius: 40px;
-            font-weight: 900;
-            font-family: 'Orbitron', sans-serif;
-            box-shadow: var(--fire-glow);
-            z-index: 2;
-            font-size: 1.3rem;
-            letter-spacing: 2px;
-            animation: timeline-year-glow 3s infinite alternate;
-        }
-        
-        @keyframes timeline-year-glow {
-            0% { box-shadow: var(--fire-glow); }
-            100% { box-shadow: 0 0 60px rgba(255, 69, 0, 0.9); }
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-year {
-            right: -120px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-year {
-            left: -120px;
-        }
-        
-        .timeline-content {
-            background: rgba(40, 40, 40, 0.6);
-            padding: 40px;
-            border-radius: calc(var(--border-radius) - 5px);
-            border: 1px solid rgba(255, 69, 0, 0.3);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            transition: all var(--animation-medium);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--fire-gradient);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform var(--animation-medium);
-        }
-        
-        .timeline-content:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .timeline-content:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px rgba(255, 69, 0, 0.2);
-            border-color: rgba(255, 69, 0, 0.6);
-        }
-        
-        /* ==================== НЕЙРОННАЯ СЕТЬ КОЛЛАБОРАЦИЙ ==================== */
-        .collab-network {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            margin: 100px 0;
-            background: rgba(20, 20, 20, 0.3);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            border: 1px solid rgba(255, 69, 0, 0.2);
-        }
-        
-        .collab-node {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: var(--plasma-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            color: black;
-            box-shadow: var(--fire-glow);
-            animation: collab-node-float 6s ease-in-out infinite;
-            cursor: pointer;
-            transition: all var(--animation-medium);
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 5px;
-            z-index: 10;
-            border: 3px solid transparent;
-        }
-        
-        .collab-node:hover {
-            transform: scale(1.5);
-            z-index: 100;
-            animation: collab-node-pulse 0.5s infinite alternate;
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .collab-node.main {
-            width: 100px;
-            height: 100px;
-            font-size: 1.1rem;
-            background: linear-gradient(45deg, var(--fire-red), var(--fire-orange));
-        }
-        
-        @keyframes collab-node-float {
-            0%, 100% { 
-                transform: translateY(0) rotate(0deg) scale(1);
-            }
-            50% { 
-                transform: translateY(-20px) rotate(5deg) scale(1.1);
-            }
-        }
-        
-        @keyframes collab-node-pulse {
-            0% { 
-                box-shadow: var(--fire-glow);
-                transform: scale(1.5);
-            }
-            100% { 
-                box-shadow: 0 0 80px rgba(255, 69, 0, 0.9);
-                transform: scale(1.6);
-            }
-        }
-        
-        .connection {
-            position: absolute;
-            background: linear-gradient(90deg, 
-                rgba(255, 69, 0, 0.3), 
-                rgba(255, 140, 0, 0.3), 
-                rgba(255, 69, 0, 0.3)
-            );
-            height: 2px;
-            transform-origin: 0 0;
-            animation: connection-flow 3s infinite linear;
-            z-index: 1;
-        }
-        
-        @keyframes connection-flow {
-            0% {
-                background-position: 0% 50%;
-                opacity: 0.3;
-            }
-            50% {
-                background-position: 100% 50%;
-                opacity: 1;
-            }
-            100% {
-                background-position: 0% 50%;
-                opacity: 0.3;
-            }
-        }
-        
-        /* ==================== ГОЛОГРАММНЫЕ НАГРАДЫ ==================== */
-        .awards-hologram {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 60px;
-            margin-top: 100px;
-            perspective: 1000px;
-        }
-        
-        .hologram-card {
-            background: rgba(20, 20, 20, 0.6);
-            border-radius: var(--border-radius);
-            padding: 50px;
-            text-align: center;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            animation: hologram-appear 1s cubic-bezier(0.4, 0, 0.2, 1) both;
-            box-shadow: 
-                0 0 100px rgba(255, 69, 0, 0.2),
-                inset 0 0 100px rgba(255, 69, 0, 0.1);
-            transition: all var(--animation-medium);
-        }
-        
-        @keyframes hologram-appear {
-            0% {
-                opacity: 0;
-                transform: translateY(100px) rotateX(90deg);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) rotateX(0);
-            }
-        }
-        
-        .hologram-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: var(--plasma-gradient);
-            z-index: -1;
-            border-radius: calc(var(--border-radius) + 2px);
-            animation: hologram-border 4s linear infinite;
-            opacity: 0.7;
-        }
-        
-        @keyframes hologram-border {
-            0% { 
-                filter: hue-rotate(0deg) blur(5px);
-                transform: scale(1);
-            }
-            50% { 
-                filter: hue-rotate(180deg) blur(10px);
-                transform: scale(1.02);
-            }
-            100% { 
-                filter: hue-rotate(360deg) blur(5px);
-                transform: scale(1);
-            }
-        }
-        
-        .hologram-card:hover {
-            transform: translateY(-30px) rotateX(10deg) rotateY(5deg);
-            box-shadow: 
-                0 50px 150px rgba(255, 69, 0, 0.3),
-                inset 0 0 150px rgba(255, 69, 0, 0.2);
-        }
-        
-        .hologram-icon {
-            font-size: 6rem;
-            margin-bottom: 40px;
-            background: var(--plasma-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: hologram-icon-spin 20s linear infinite;
-            display: inline-block;
-            filter: drop-shadow(0 0 20px rgba(255, 69, 0, 0.5));
-        }
-        
-        @keyframes hologram-icon-spin {
-            0% { transform: rotateY(0) scale(1); }
-            50% { transform: rotateY(180deg) scale(1.1); }
-            100% { transform: rotateY(360deg) scale(1); }
-        }
-        
-        .hologram-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: var(--plasma-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-family: 'Orbitron', sans-serif;
-            text-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
-            animation: hologram-title-glow 3s infinite alternate;
-        }
-        
-        @keyframes hologram-title-glow {
-            0% { 
-                text-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
-                filter: brightness(1);
-            }
-            100% { 
-                text-shadow: 0 0 60px rgba(255, 69, 0, 0.8);
-                filter: brightness(1.3);
-            }
-        }
-        
-        /* ==================== КВАНТОВЫЕ СОЦСЕТИ ==================== */
-        .quantum-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 100px;
-        }
-        
-        .quantum-card {
-            background: rgba(30, 30, 30, 0.4);
-            border-radius: calc(var(--border-radius) - 5px);
-            padding: 50px 40px;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            transition: all var(--animation-medium);
-            border: 2px solid transparent;
-            backdrop-filter: blur(20px);
-            animation: quantum-card-appear 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
-            animation-delay: calc(var(--i) * 0.1s);
-        }
-        
-        .quantum-card:nth-child(1) { --i: 1; }
-        .quantum-card:nth-child(2) { --i: 2; }
-        .quantum-card:nth-child(3) { --i: 3; }
-        .quantum-card:nth-child(4) { --i: 4; }
-        .quantum-card:nth-child(5) { --i: 5; }
-        .quantum-card:nth-child(6) { --i: 6; }
-        
-        @keyframes quantum-card-appear {
-            0% {
-                opacity: 0;
-                transform: translateY(50px) scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        
-        .quantum-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--plasma-gradient);
-            opacity: 0;
-            transition: opacity var(--animation-medium);
-            z-index: -1;
-        }
-        
-        .quantum-card:hover::before {
-            opacity: 0.2;
-        }
-        
-        .quantum-card:hover {
-            transform: translateY(-20px) scale(1.05);
-            border-color: rgba(255, 69, 0, 0.5);
-            box-shadow: 
-                0 30px 80px rgba(255, 69, 0, 0.3),
-                inset 0 0 100px rgba(255, 69, 0, 0.1);
-        }
-        
-        .quantum-icon {
-            font-size: 5rem;
-            margin-bottom: 30px;
-            display: inline-block;
-            transition: all var(--animation-medium);
-        }
-        
-        .quantum-card:hover .quantum-icon {
-            transform: scale(1.3) rotate(20deg);
-            animation: quantum-icon-float 2s ease-in-out infinite;
-        }
-        
-        @keyframes quantum-icon-float {
-            0%, 100% { 
-                transform: scale(1.3) rotate(20deg) translateY(0);
-            }
-            50% { 
-                transform: scale(1.3) rotate(20deg) translateY(-10px);
-            }
-        }
-        
-        .quantum-name {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 2px;
-            background: linear-gradient(45deg, #fff, var(--fire-gold));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        /* ==================== ЮТУБ ДОСТИЖЕНИЯ С АУРАМИ ==================== */
-        .youtube-auras {
-            background: rgba(10, 10, 10, 0.7);
-            border-radius: calc(var(--border-radius) + 10px);
-            padding: 80px;
-            margin: 150px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border: 3px solid transparent;
-            animation: aura-border 6s infinite alternate;
-            backdrop-filter: blur(20px);
-        }
-        
-        @keyframes aura-border {
-            0% { 
-                border-color: rgba(255, 0, 0, 0.3);
-                box-shadow: 0 0 50px rgba(255, 0, 0, 0.2);
-            }
-            50% { 
-                border-color: rgba(255, 69, 0, 0.3);
-                box-shadow: 0 0 80px rgba(255, 69, 0, 0.3);
-            }
-            100% { 
-                border-color: rgba(255, 215, 0, 0.3);
-                box-shadow: 0 0 50px rgba(255, 215, 0, 0.2);
-            }
-        }
-        
-        .youtube-auras::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, 
-                rgba(255, 0, 0, 0.1) 0%, 
-                rgba(255, 69, 0, 0.1) 25%,
-                transparent 70%
-            );
-            animation: aura-rotate 20s linear infinite;
-            z-index: -1;
-        }
-        
-        @keyframes aura-rotate {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-        
-        .aura-badges {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 80px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .aura-badge {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: rgba(0, 0, 0, 0.6);
-            border: 4px solid transparent;
-            animation: aura-badge-pulse 4s infinite alternate;
-            transition: all var(--animation-medium);
-            backdrop-filter: blur(10px);
-        }
-        
-        @keyframes aura-badge-pulse {
-            0% { 
-                box-shadow: 
-                    0 0 50px rgba(255, 0, 0, 0.3),
-                    inset 0 0 50px rgba(255, 0, 0, 0.1);
-                border-color: rgba(255, 0, 0, 0.5);
-                transform: scale(1);
-            }
-            100% { 
-                box-shadow: 
-                    0 0 100px rgba(255, 0, 0, 0.6),
-                    inset 0 0 100px rgba(255, 0, 0, 0.2);
-                border-color: rgba(255, 0, 0, 0.8);
-                transform: scale(1.05);
-            }
-        }
-        
-        .aura-badge:hover {
-            transform: scale(1.2) rotate(10deg);
-            animation: aura-badge-spin 1s linear infinite;
-        }
-        
-        @keyframes aura-badge-spin {
-            0% { transform: scale(1.2) rotate(10deg); }
-            100% { transform: scale(1.2) rotate(370deg); }
-        }
-        
-        .aura-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 15px;
-            text-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
-            animation: aura-number-glow 2s infinite alternate;
-        }
-        
-        @keyframes aura-number-glow {
-            0% { 
-                text-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
-                filter: brightness(1);
-            }
-            100% { 
-                text-shadow: 0 0 60px rgba(255, 0, 0, 0.9);
-                filter: brightness(1.3);
-            }
-        }
-        
-        /* ==================== ФУТЕР С ПЛАЗМЕННЫМ ЭФФЕКТОМ ==================== */
-        footer {
-            background: linear-gradient(to top, 
-                rgba(10, 10, 10, 0.98) 0%,
-                rgba(20, 20, 20, 0.95) 100%
-            );
-            padding: 120px 0 60px;
-            margin-top: 150px;
-            position: relative;
-            overflow: hidden;
-            border-top: 3px solid transparent;
-            animation: footer-border 8s infinite alternate;
-            backdrop-filter: blur(20px);
-        }
-        
-        @keyframes footer-border {
-            0% { 
-                border-top-color: rgba(255, 0, 0, 0.3);
-                box-shadow: inset 0 1px 0 rgba(255, 0, 0, 0.1);
-            }
-            33% { 
-                border-top-color: rgba(255, 69, 0, 0.3);
-                box-shadow: inset 0 1px 0 rgba(255, 69, 0, 0.1);
-            }
-            66% { 
-                border-top-color: rgba(255, 140, 0, 0.3);
-                box-shadow: inset 0 1px 0 rgba(255, 140, 0, 0.1);
-            }
-            100% { 
-                border-top-color: rgba(255, 215, 0, 0.3);
-                box-shadow: inset 0 1px 0 rgba(255, 215, 0, 0.1);
-            }
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--plasma-gradient);
-            animation: footer-plasma-flow 6s linear infinite;
-            z-index: 1;
-        }
-        
-        @keyframes footer-plasma-flow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 400% 50%; }
-        }
-        
-        .footer-content {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 40px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .footer-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 4.5rem;
-            background: var(--plasma-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 50px;
-            text-shadow: var(--fire-glow);
-            animation: footer-logo-shimmer 8s ease infinite;
-            display: inline-block;
-            padding: 20px 40px;
-            border-radius: 20px;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 69, 0, 0.2);
-        }
-        
-        @keyframes footer-logo-shimmer {
-            0%, 100% { 
-                background-position: 0% 50%;
-                transform: scale(1);
-            }
-            50% { 
-                background-position: 100% 50%;
-                transform: scale(1.02);
-            }
-        }
-        
-        .footer-quote {
-            font-size: 2.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 80px;
-            font-style: italic;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-            font-weight: 300;
-            padding: 40px;
-            background: rgba(255, 69, 0, 0.05);
-            border-radius: var(--border-radius);
-            border-left: 5px solid var(--fire-orange);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .footer-quote::before {
-            content: '❝';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 4rem;
-            color: rgba(255, 69, 0, 0.2);
-            font-family: serif;
-        }
-        
-        .footer-quote::after {
-            content: '❞';
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 4rem;
-            color: rgba(255, 69, 0, 0.2);
-            font-family: serif;
-        }
-        
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 60px 0;
-            flex-wrap: wrap;
-        }
-        
-        .footer-social-link {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 2rem;
-            transition: all var(--animation-medium);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 69, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .footer-social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.2), 
-                transparent
-            );
-            transition: left 0.8s;
-        }
-        
-        .footer-social-link:hover::before {
-            left: 100%;
-        }
-        
-        .footer-social-link:hover {
-            color: white;
-            transform: translateY(-10px) scale(1.1);
-            box-shadow: 0 15px 40px rgba(255, 69, 0, 0.3);
-            border-color: rgba(255, 69, 0, 0.5);
-        }
-        
-        .footer-social-link.twitch:hover {
-            background: rgba(145, 70, 255, 0.2);
-            color: #9146FF;
-        }
-        
-        .footer-social-link.youtube:hover {
-            background: rgba(255, 0, 0, 0.2);
-            color: #FF0000;
-        }
-        
-        .footer-social-link.telegram:hover {
-            background: rgba(38, 165, 228, 0.2);
-            color: #26A5E4;
-        }
-        
-        .copyright {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 1.1rem;
-            margin-top: 80px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 40px;
-            letter-spacing: 2px;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .fps-counter {
-            display: inline-block;
-            background: rgba(255, 69, 0, 0.1);
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin-left: 10px;
-            font-weight: bold;
-            color: var(--fire-gold);
-            border: 1px solid rgba(255, 69, 0, 0.3);
-        }
-        
-        /* ==================== АДАПТИВНОСТЬ ==================== */
-        @media (max-width: 1600px) {
-            :root {
-                --container-width: 1400px;
-                --section-padding: 120px;
+            
+            /* ГЕРОЙ СЕКЦИЯ */
+            .hero {
+                height: 100vh;
             }
             
             .hero-title {
                 font-size: 5.5rem;
             }
             
-            .section-title {
-                font-size: 4rem;
-            }
-        }
-        
-        @media (max-width: 1200px) {
-            :root {
-                --container-width: 1200px;
-                --header-height: 90px;
-            }
-            
-            .hero-title {
-                font-size: 4.5rem;
-            }
-            
             .hero-subtitle {
                 font-size: 1.8rem;
+                max-width: 800px;
             }
             
-            .nav-link {
-                padding: 12px 20px;
-                font-size: 1rem;
+            .hero-stats {
+                gap: 60px;
             }
             
-            .awards-hologram {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            .stat-number {
+                font-size: 4rem;
+            }
+            
+            /* СЕТКИ ДЛЯ ПК */
+            .social-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .awards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .collab-cloud {
+                gap: 20px;
+            }
+            
+            .timeline::before {
+                left: 50%;
+            }
+            
+            .timeline-item {
+                width: 45%;
+            }
+            
+            .timeline-item:nth-child(odd) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 55%;
+            }
+            
+            .achievement-badges {
+                flex-direction: row;
                 gap: 40px;
             }
             
-            .collab-network {
-                height: 500px;
-            }
-            
-            .aura-badge {
-                width: 220px;
-                height: 220px;
+            /* КНОПКИ ПРОКРУТКИ ВИДНЫ */
+            .scroll-down {
+                display: block;
             }
         }
         
-        @media (max-width: 992px) {
-            :root {
-                --container-width: 100%;
-                --section-padding: 100px;
-                --header-height: 80px;
+        /* ====== ДЛЯ ТАБЛЕТОВ ====== */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* УБИРАЕМ КУРСОР ДЛЯ ТАЧСКРИНОВ */
+            .cursor-dot, .cursor-ring {
+                display: none;
             }
             
-            .hero-title {
-                font-size: 3.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.6rem;
+            /* ШАПКА */
+            header {
+                height: 80px;
             }
             
             .nav-container {
+                height: 80px;
                 padding: 0 20px;
             }
             
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 300px;
-                height: 100vh;
-                background: rgba(10, 10, 10, 0.98);
-                backdrop-filter: blur(30px);
-                flex-direction: column;
-                padding: 120px 20px 20px;
-                transition: var(--animation-medium);
-                box-shadow: -10px 0 50px rgba(0, 0, 0, 0.5);
-                z-index: 1000;
-                overflow-y: auto;
+            .logo {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
             }
             
-            .nav-menu.active {
-                right: 0;
+            /* ГЕРОЙ */
+            .hero {
+                height: 80vh;
+                padding-top: 80px;
             }
             
-            .nav-link {
-                width: 100%;
-                margin: 10px 0;
-                text-align: center;
-                justify-content: center;
+            .hero-title {
+                font-size: 3.8rem;
             }
             
-            .burger {
-                display: flex;
+            .hero-subtitle {
+                font-size: 1.4rem;
+                max-width: 700px;
+                padding: 0 20px;
+            }
+            
+            .hero-stats {
+                gap: 40px;
+            }
+            
+            .stat-number {
+                font-size: 3rem;
+            }
+            
+            /* СЕТКИ */
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .awards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
             }
             
             .timeline::before {
@@ -1759,105 +218,318 @@
                 left: 80px !important;
             }
             
-            .timeline-item:nth-child(odd) .timeline-year,
-            .timeline-item:nth-child(even) .timeline-year {
-                left: -120px !important;
+            .timeline-year {
+                left: -80px !important;
                 right: auto !important;
             }
             
-            .timeline-item:nth-child(odd) .timeline-dot,
-            .timeline-item:nth-child(even) .timeline-dot {
-                left: -75px !important;
-                right: auto !important;
+            .achievement-badges {
+                flex-direction: row;
+                gap: 20px;
+                flex-wrap: wrap;
             }
             
-            .awards-hologram {
-                grid-template-columns: 1fr;
+            .achievement-badge {
+                width: 180px;
             }
             
-            .quantum-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-            
-            .aura-badges {
-                flex-direction: column;
-                align-items: center;
-                gap: 40px;
+            /* КНОПКА ПРОКРУТКИ */
+            .scroll-down {
+                display: block;
+                bottom: 20px;
             }
         }
         
+        /* ====== ДЛЯ ТЕЛЕФОНОВ ====== */
         @media (max-width: 768px) {
-            :root {
-                --section-padding: 80px;
-                --border-radius: 20px;
+            /* УБИРАЕМ КУРСОР */
+            .cursor-dot, .cursor-ring {
+                display: none;
             }
             
-            body {
-                cursor: default;
+            /* МОБИЛЬНАЯ ШАПКА */
+            header {
+                height: 70px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+                background: rgba(10, 10, 10, 0.95) !important;
+                backdrop-filter: blur(10px) !important;
+                padding: 0 !important;
+                border-bottom: 1px solid rgba(255, 69, 0, 0.3);
             }
             
+            .nav-container {
+                height: 70px;
+                padding: 0 15px;
+                position: relative;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            /* БУРГЕР МЕНЮ */
+            .burger {
+                display: flex !important;
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1001;
+            }
+            
+            .burger span {
+                width: 25px;
+                height: 3px;
+                background: var(--accent);
+                margin: 3px 0;
+                transition: 0.4s;
+                border-radius: 2px;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 100px 20px 20px;
+                transition: 0.5s;
+                z-index: 1000;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-link {
+                width: 100%;
+                text-align: left;
+                padding: 18px 20px;
+                margin: 8px 0;
+                border-radius: 12px;
+                font-size: 1.1rem;
+                background: rgba(255, 69, 0, 0.1);
+                border: 1px solid rgba(255, 69, 0, 0.2);
+            }
+            
+            /* ГЕРОЙ ДЛЯ ТЕЛЕФОНА */
             .hero {
-                padding-top: var(--header-height);
+                height: 100vh;
+                padding: 120px 15px 60px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
             
             .hero-title {
-                font-size: 2.8rem;
-                letter-spacing: 2px;
+                font-size: 2.5rem;
+                line-height: 1.2;
+                margin-bottom: 20px;
+                word-break: break-word;
+                padding: 0 10px;
             }
             
             .hero-subtitle {
-                font-size: 1.4rem;
-                padding: 0 20px;
+                font-size: 1.1rem;
+                line-height: 1.5;
+                margin-bottom: 30px;
+                padding: 0 10px;
+                color: rgba(255, 255, 255, 0.9);
             }
             
             .hero-stats {
-                gap: 40px;
                 flex-direction: column;
+                gap: 25px;
+                margin-top: 40px;
+            }
+            
+            .stat-item {
+                width: 100%;
+                padding: 15px;
+                background: rgba(255, 69, 0, 0.05);
+                border-radius: 15px;
+                border: 1px solid rgba(255, 69, 0, 0.1);
             }
             
             .stat-number {
-                font-size: 3.5rem;
+                font-size: 2.5rem;
+            }
+            
+            .stat-label {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+            
+            /* СЕКЦИИ ДЛЯ ТЕЛЕФОНА */
+            .section {
+                padding: 80px 0;
+            }
+            
+            .container {
+                padding: 0 15px;
             }
             
             .section-title {
-                font-size: 2.8rem;
-                letter-spacing: 3px;
-                margin-bottom: 60px;
+                font-size: 2.2rem;
+                margin-bottom: 40px;
+                padding: 0 10px;
+                text-align: center;
             }
             
             .card {
-                padding: 40px 30px;
+                padding: 25px 20px;
+                margin-bottom: 25px;
+                border-radius: 15px;
             }
             
             .card-title {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
             }
             
-            .container, .footer-content, .nav-container {
-                padding: 0 20px;
+            /* СОЦСЕТИ В КОЛОНКУ */
+            .social-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .social-card {
+                padding: 25px 20px;
+                border-radius: 15px;
+            }
+            
+            /* НАГРАДЫ В КОЛОНКУ */
+            .awards-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .award-card {
+                padding: 25px 20px;
+                border-radius: 15px;
+            }
+            
+            /* ТАЙМЛАЙН ВЕРТИКАЛЬНЫЙ */
+            .timeline {
+                margin: 40px auto;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 40px);
+                left: 40px !important;
+                margin-bottom: 40px;
+            }
+            
+            .timeline-year {
+                position: relative !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: auto !important;
+                margin-bottom: 15px;
+                display: inline-block;
+            }
+            
+            .timeline-content {
+                padding: 20px;
+                border-radius: 12px;
+            }
+            
+            /* ОБЛАКО КОЛЛАБОВ */
+            .collab-cloud {
+                gap: 10px;
+                justify-content: center;
+            }
+            
+            .collab-tag {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                border-radius: 20px;
+            }
+            
+            .collab-tag.main {
+                padding: 14px 25px;
+                font-size: 1rem;
+            }
+            
+            /* ДОСТИЖЕНИЯ ЮТУБ В КОЛОНКУ */
+            .youtube-achievements {
+                padding: 30px 20px;
+                margin: 40px 0;
+                border-radius: 20px;
+            }
+            
+            .achievement-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+            
+            .achievement-badges {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+            
+            .achievement-badge {
+                width: 90%;
+                max-width: 300px;
+                padding: 25px 20px;
+            }
+            
+            /* АЛЬБОМ РЕЛИЗ */
+            .album-release {
+                padding: 30px 20px;
+                margin: 40px 0;
+                border-radius: 20px;
+            }
+            
+            .album-title {
+                font-size: 2rem;
+            }
+            
+            /* БАТТЛ СЕКЦИЯ */
+            .battle-highlights {
+                padding: 25px 20px;
+                margin: 30px 0;
+                border-radius: 15px;
+            }
+            
+            /* ПОДВАЛ */
+            footer {
+                padding: 60px 0 30px;
             }
             
             .footer-logo {
-                font-size: 3.5rem;
+                font-size: 2.5rem;
             }
             
             .footer-quote {
-                font-size: 1.6rem;
-                padding: 30px 20px;
+                font-size: 1.3rem;
+                padding: 0 15px;
             }
             
-            .youtube-auras {
-                padding: 40px 20px;
-                margin: 80px 0;
-            }
-            
+            /* КНОПКУ ПРОКРУТКИ СКРЫВАЕМ НА ТЕЛЕФОНЕ */
             .scroll-down {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+                display: none;
             }
             
-            /* Свайп индикатор для мобилок */
+            /* СВАЙП ИНДИКАТОР ДЛЯ ТЕЛЕФОНА */
             .swipe-indicator {
                 display: flex;
                 flex-direction: column;
@@ -1867,269 +539,409 @@
                 left: 0;
                 width: 100%;
                 z-index: 10;
-                color: rgba(255, 255, 255, 0.7);
-                font-size: 0.9rem;
-                animation: mobile-pulse 2s infinite;
-                pointer-events: none;
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 0.8rem;
+                animation: pulse 2s infinite;
             }
             
             .swipe-indicator i {
                 font-size: 1.5rem;
                 margin-bottom: 5px;
-                animation: mobile-swipe 1.5s infinite;
+                animation: swipe 1.5s infinite;
             }
             
-            @keyframes mobile-pulse {
+            @keyframes swipe {
+                0%, 100% { transform: translateX(0); }
+                50% { transform: translateX(20px); }
+            }
+            
+            @keyframes pulse {
                 0%, 100% { opacity: 0.5; }
                 50% { opacity: 1; }
             }
             
-            @keyframes mobile-swipe {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(10px); }
+            /* ТАЧ-ФРЕНДЛИ КНОПКИ */
+            button, .nav-link, .social-card, .collab-tag {
+                min-height: 44px; /* Рекомендуемый размер для пальцев */
             }
             
-            /* Оптимизация для мобилок */
-            .parallax-layer,
-            .particles-container,
-            .hero-explosion {
+            /* УВЕЛИЧИВАЕМ РАЗМЕР ТЕКСТА ДЛЯ ЛЕГКОГО ЧТЕНИЯ */
+            p, li {
+                font-size: 1.05rem;
+                line-height: 1.6;
+            }
+            
+            /* УБИРАЕМ СЛОЖНЫЕ ЭФФЕКТЫ ДЛЯ ПРОИЗВОДИТЕЛЬНОСТИ */
+            .card::before, .award-card::before, .social-card::before {
                 display: none;
             }
-        }
-        
-        @media (max-width: 480px) {
-            :root {
-                --section-padding: 60px;
-                --header-height: 70px;
-            }
             
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-            
-            .nav-container {
-                padding: 0 15px;
-            }
-            
-            .logo {
-                font-size: 2.2rem;
-            }
-            
-            .container, .footer-content {
-                padding: 0 15px;
-            }
-            
-            .card {
-                padding: 30px 20px;
-            }
-            
-            .footer-logo {
-                font-size: 2.8rem;
-            }
-            
-            .footer-quote {
-                font-size: 1.3rem;
-            }
-            
-            .footer-social-link {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
+            .card:hover, .award-card:hover, .social-card:hover {
+                transform: none !important;
             }
         }
         
-        /* ==================== УТИЛИТЫ ==================== */
-        .text-gradient {
-            background: var(--fire-gradient);
+        /* ====== ОБЩИЕ СТИЛИ ====== */
+        header {
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(15px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            background: var(--fire);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-        }
-        
-        .neon-text {
-            text-shadow: var(--neon-glow);
-        }
-        
-        .fire-text {
             text-shadow: var(--fire-glow);
         }
         
-        .gold-text {
-            color: var(--fire-gold);
-            text-shadow: var(--gold-glow);
+        .burger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .nav-link.active {
+            background: rgba(255, 69, 0, 0.9);
+            color: black;
+            box-shadow: var(--accent-glow);
+        }
+        
+        .hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            opacity: 0.2;
+            filter: brightness(0.4) contrast(1.2);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 1200px;
+        }
+        
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            background: var(--fire);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: var(--fire-glow);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 auto;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+        }
+        
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            position: relative;
+            color: white;
+        }
+        
+        .card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 69, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-grid {
+            display: grid;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .social-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .awards-grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .award-card {
+            background: rgba(25, 25, 25, 0.8);
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--fire);
+            box-shadow: var(--accent-glow);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-year {
+            background: var(--fire);
+            color: black;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: var(--accent-glow);
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            background: rgba(40, 40, 40, 0.8);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .collab-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .collab-tag {
+            border-radius: 50px;
+            background: rgba(255, 69, 0, 0.15);
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .youtube-achievements {
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 25px;
+            text-align: center;
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievement-badges {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .achievement-badge {
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+        
+        footer {
+            background: rgba(5, 5, 5, 0.95);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 69, 0, 0.3);
+            position: relative;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
         }
         
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(30px);
+            transition: all 0.6s;
         }
         
-        .reveal.visible {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
         
-        .delayed-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-            transition-delay: 0.5s;
+        /* АНИМАЦИИ */
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 0 0 5px #ff8c00, 0 0 10px #ff4500, 0 0 20px #ff0000;
+            }
+            20%, 24%, 55% { text-shadow: none; }
         }
         
-        .delayed-reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* ==================== АНИМАЦИИ ==================== */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-10px); }
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        @keyframes glow {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.3); }
-        }
-        
-        /* ==================== ТЕМНЫЙ/СВЕТЛЫЙ РЕЖИМ (БУДУЩЕЕ) ==================== */
-        @media (prefers-color-scheme: light) {
-            body {
-                background: #f0f0f0;
-                color: #333;
-            }
-            
-            .card, .timeline-content, .quantum-card, .hologram-card {
-                background: rgba(255, 255, 255, 0.9);
-                color: #333;
-            }
-            
-            .nav-link {
-                color: #333;
+        /* ПРИМЕНЯЕМ АНИМАЦИИ ТОЛЬКО НА ПК */
+        @media (min-width: 1025px) {
+            .hero-title {
+                animation: flicker 3s infinite alternate, float 6s ease-in-out infinite;
             }
         }
     </style>
 </head>
 <body>
-    <!-- ПАРАЛЛАКС ФОН -->
-    <div class="parallax-wrapper">
-        <div class="parallax-layer parallax-layer-1"></div>
-        <div class="parallax-layer parallax-layer-2"></div>
-        <div class="parallax-layer parallax-layer-3"></div>
-    </div>
-    
-    <!-- ЧАСТИЦЫ -->
-    <div class="particles-container" id="particles"></div>
-    
-    <!-- ВЗРЫВ ПРИ ЗАГРУЗКЕ -->
-    <div class="hero-explosion"></div>
+    <!-- КУРСОР (ТОЛЬКО ДЛЯ ПК) -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
     
     <!-- ШАПКА -->
-    <header id="header">
+    <header>
         <div class="nav-container">
             <div class="logo">B1GPAPA</div>
             
-            <div class="burger" id="burger">
+            <div class="burger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
             
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">
-                    <i class="nav-icon fas fa-home"></i>
-                    ГЛАВНАЯ
-                </a></li>
-                <li><a href="#about" class="nav-link">
-                    <i class="nav-icon fas fa-user"></i>
-                    КТО ОН?
-                </a></li>
-                <li><a href="#ratings" class="nav-link">
-                    <i class="nav-icon fas fa-chart-line"></i>
-                    РЕЙТИНГИ
-                </a></li>
-                <li><a href="#collabs" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                    КОЛЛАБЫ
-                </a></li>
-                <li><a href="#battles" class="nav-link">
-                    <i class="nav-icon fas fa-microphone"></i>
-                    БАТТЛЫ
-                </a></li>
-                <li><a href="#awards" class="nav-link">
-                    <i class="nav-icon fas fa-trophy"></i>
-                    НАГРАДЫ
-                </a></li>
-                <li><a href="#social" class="nav-link">
-                    <i class="nav-icon fas fa-share-alt"></i>
-                    СОЦСЕТИ
-                </a></li>
-                <li><a href="#youtube" class="nav-link">
-                    <i class="nav-icon fab fa-youtube"></i>
-                    ЮТУБ
-                </a></li>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">ГЛАВНАЯ</a></li>
+                <li><a href="#about" class="nav-link">КТО ОН?</a></li>
+                <li><a href="#ratings" class="nav-link">РЕЙТИНГИ</a></li>
+                <li><a href="#collabs" class="nav-link">КОЛЛАБЫ</a></li>
+                <li><a href="#battles" class="nav-link">БАТТЛЫ</a></li>
+                <li><a href="#awards" class="nav-link">НАГРАДЫ</a></li>
+                <li><a href="#social" class="nav-link">СОЦСЕТИ</a></li>
+                <li><a href="#youtube" class="nav-link">ЮТУБ</a></li>
             </ul>
         </div>
     </header>
     
     <!-- ГЛАВНЫЙ ЭКРАН -->
     <section id="home" class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1 class="hero-title">B1GPAPA<br>СГОРЕЛ ДО ТЛА</h1>
-            
-            <p class="hero-subtitle">
-                Егор Первак — феномен, перевернувший рунет. Человек, чья энергия зажигала миллионы. 
-                Легенда, которая не ушла, а растворилась в вечности интернета.
+            <h1 class="hero-title reveal">B1GPAPA<br>СГОРЕЛ ДО ТЛА</h1>
+            <p class="hero-subtitle reveal">
+                Егор Первак — легенда русского стриминга, человек, который горел так ярко, 
+                что осветил путь для тысяч других.
             </p>
             
             <div class="hero-stats">
-                <div class="stat-item">
+                <div class="stat-item reveal">
                     <div class="stat-number" data-count="10500000">10.5M</div>
                     <div class="stat-label">Подписчиков</div>
                 </div>
-                
-                <div class="stat-item">
+                <div class="stat-item reveal">
                     <div class="stat-number" data-count="15">15</div>
                     <div class="stat-label">Лет карьеры</div>
                 </div>
-                
-                <div class="stat-item">
+                <div class="stat-item reveal">
                     <div class="stat-number" data-count="5000">5000+</div>
                     <div class="stat-label">Стримов</div>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-number" data-count="100">100+</div>
-                    <div class="stat-label">Коллабов</div>
                 </div>
             </div>
         </div>
         
-        <!-- КНОПКА ПРОКРУТКИ -->
-        <a href="#about" class="scroll-down" aria-label="Прокрутить вниз">
-            <i class="fas fa-chevron-down"></i>
-        </a>
-        
-        <!-- СВАЙП ДЛЯ МОБИЛЬНЫХ -->
+        <!-- ИНДИКАТОР ДЛЯ ТЕЛЕФОНА -->
         <div class="swipe-indicator">
             <i class="fas fa-hand-point-up"></i>
             <span>Листайте вниз</span>
@@ -2139,63 +951,57 @@
     <!-- О НЁМ -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title">КТО ТАКОЙ B1GPAPA?</h2>
+            <h2 class="section-title reveal">КТО ТАКОЙ B1GPAPA?</h2>
             
-            <div class="card">
+            <div class="card reveal">
                 <h3 class="card-title">ФЕНОМЕН ЭПОХИ</h3>
+                <p style="font-size: 1.1rem; line-height: 1.7; color: rgba(255, 255, 255, 0.9); padding: 0 10px;">
+                    Егор Первак, известный как B1GPapa — не просто стример или видеоблогер. 
+                    Это культурный феномен, который перевернул представление о русскоязычном контенте.
+                </p>
                 
-                <div class="delayed-reveal" style="font-size: 1.3rem; line-height: 1.9; color: rgba(255, 255, 255, 0.95); margin-bottom: 40px;">
-                    <p>B1GPapa — не просто никнейм, а культурный код целого поколения. Егор Первак создал 
-                    не канал, а вселенную, где каждый зритель чувствовал себя частью чего-то большего.</p>
-                    
-                    <p style="margin-top: 25px;">Его стиль — это смесь безудержной энергии, искромётного юмора и абсолютной искренности. 
-                    Он не играл в игры — он проживал их. Каждая победа, каждое поражение, каждая эмоция 
-                    передавались с такой силой, что стиралась грань между экраном и реальностью.</p>
-                    
-                    <p style="margin-top: 25px;">B1GPapa стал символом эпохи, когда контент перестал быть просто развлечением, а превратился 
-                    в способ общения, самовыражения и создания сообщества.</p>
-                </div>
-                
-                <div class="delayed-reveal" style="background: linear-gradient(135deg, rgba(255, 69, 0, 0.15), rgba(255, 140, 0, 0.15)); 
-                         border-radius: var(--border-radius); padding: 40px; border-left: 6px solid var(--fire-orange); 
-                         margin-top: 40px;">
-                    <p style="font-size: 1.8rem; font-style: italic; color: rgba(255, 255, 255, 0.95); 
-                            text-align: center; line-height: 1.6;">
-                        "Он горел не для того, чтобы светить. Он горел, потому что не мог иначе. 
-                        И в этом пламени сгорели все границы между экраном и реальностью."
+                <div style="margin-top: 25px; padding: 20px; background: rgba(255, 69, 0, 0.1); border-radius: 12px; border-left: 4px solid var(--accent);">
+                    <p style="font-size: 1.1rem; font-style: italic; color: rgba(255, 255, 255, 0.9);">
+                        "Он не играл в игры — он проживал их. Каждая победа, каждое поражение, 
+                        каждая эмоция передавались тысячам зрителей."
                     </p>
-                </div>
-                
-                <div class="delayed-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px;">
-                    <div style="text-align: center; padding: 30px; background: rgba(255, 69, 0, 0.1); border-radius: calc(var(--border-radius) - 10px);">
-                        <div style="font-size: 3rem; color: var(--fire-orange); margin-bottom: 15px;">⚡</div>
-                        <h4 style="color: var(--fire-gold); margin-bottom: 10px;">НЕВЕРОЯТНАЯ ЭНЕРГИЯ</h4>
-                        <p>Заряжал зрителей на недели вперед</p>
-                    </div>
-                    
-                    <div style="text-align: center; padding: 30px; background: rgba(255, 69, 0, 0.1); border-radius: calc(var(--border-radius) - 10px);">
-                        <div style="font-size: 3rem; color: var(--fire-orange); margin-bottom: 15px;">🎭</div>
-                        <h4 style="color: var(--fire-gold); margin-bottom: 10px;">АБСОЛЮТНАЯ ИСКРЕННОСТЬ</h4>
-                        <p>Никаких масок, только настоящие эмоции</p>
-                    </div>
-                    
-                    <div style="text-align: center; padding: 30px; background: rgba(255, 69, 0, 0.1); border-radius: calc(var(--border-radius) - 10px);">
-                        <div style="font-size: 3rem; color: var(--fire-orange); margin-bottom: 15px;">❤️</div>
-                        <h4 style="color: var(--fire-gold); margin-bottom: 10px;">НАСТОЯЩЕЕ ОБЩЕНИЕ</h4>
-                        <p>Разговаривал с аудиторией как с друзьями</p>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- РЕЙТИНГИ И ДОСТИЖЕНИЯ -->
-    <section id="ratings" class="section" style="background: rgba(10, 10, 10, 0.6);">
+    <!-- РЕЙТИНГИ -->
+    <section id="ratings" class="section" style="background: rgba(10, 10, 10, 0.5);">
         <div class="container">
-            <h2 class="section-title">РЕЙТИНГИ И ДОСТИЖЕНИЯ</h2>
+            <h2 class="section-title reveal">РЕЙТИНГИ И ДОСТИЖЕНИЯ</h2>
             
             <div class="timeline">
-                <!-- Таймлайн будет заполнен JavaScript -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h4 style="color: var(--gold); margin-bottom: 10px;">⭐ БРИЛЛИАНТОВАЯ КНОПКА ⭐</h4>
+                        <p>20 ФЕВРАЛЯ — 10 МИЛЛИОНОВ ПОДПИСЧИКОВ!</p>
+                        <p>Получил бриллиантовую кнопку от YouTube</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h4 style="color: var(--gold); margin-bottom: 10px;">МУЛЬТИПЛАТФОРМЕННОСТЬ</h4>
+                        <p>9-е место в "Топ-20 каналов YouTube"</p>
+                        <p>3-е место в "Топ-20 блогеров VK"</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h4 style="color: var(--gold); margin-bottom: 10px;">ТЕЛЕГРАМ-ЛИДЕР</h4>
+                        <p>6-е место в "Топ-20 каналов YouTube"</p>
+                        <p>Telegram-канал: 2-е место в "Топ-20 блогеров"</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -2203,283 +1009,134 @@
     <!-- КОЛЛАБОРАЦИИ -->
     <section id="collabs" class="section">
         <div class="container">
-            <h2 class="section-title">КОЛЛАБОРАЦИИ С ЛЕГЕНДАМИ</h2>
+            <h2 class="section-title reveal">КОЛЛАБОРАЦИИ</h2>
             
-            <div class="card">
-                <p class="delayed-reveal" style="text-align: center; font-size: 1.4rem; margin-bottom: 50px; color: rgba(255, 255, 255, 0.9);">
-                    За годы карьеры B1GPapa сотрудничал с самыми яркими звёздами русскоязычного интернета
+            <div class="card reveal">
+                <p style="text-align: center; margin-bottom: 20px; font-size: 1.1rem;">
+                    Сотрудничал с самыми яркими представителями рунета
                 </p>
                 
-                <div class="collab-network" id="collabNetwork">
-                    <!-- Нейронная сеть будет создана JavaScript -->
-                </div>
-                
-                <div class="delayed-reveal" style="text-align: center; margin-top: 50px;">
-                    <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.7);">
-                        Нажмите на любой узел, чтобы узнать больше о коллаборации
-                    </p>
+                <div class="collab-cloud">
+                    <div class="collab-tag main">Oxxxymiron</div>
+                    <div class="collab-tag main">Kuplinov Play</div>
+                    <div class="collab-tag">Слава КПСС</div>
+                    <div class="collab-tag">Моргенштерн</div>
+                    <div class="collab-tag">Drago</div>
+                    <div class="collab-tag">ХХОС</div>
+                    <div class="collab-tag">и многие другие</div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- РЭП-БАТТЛЫ И МУЗЫКА -->
-    <section id="battles" class="section" style="background: rgba(20, 20, 20, 0.7);">
+    <!-- БАТТЛЫ -->
+    <section id="battles" class="section" style="background: rgba(20, 20, 20, 0.6);">
         <div class="container">
-            <h2 class="section-title">РЭП-БАТТЛЫ И МУЗЫКА</h2>
+            <h2 class="section-title reveal">РЭП-БАТТЛЫ И МУЗЫКА</h2>
             
-            <div class="card">
-                <h3 class="card-title">🎤 МУЗЫКАЛЬНОЕ НАСЛЕДИЕ</h3>
-                
-                <div class="delayed-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px;">
-                    <div style="text-align: center; padding: 30px; background: rgba(255, 69, 0, 0.1); border-radius: calc(var(--border-radius) - 10px);">
-                        <div style="font-size: 4rem; margin-bottom: 20px;">🎵</div>
-                        <h4 style="color: var(--fire-gold); margin-bottom: 15px; font-size: 1.5rem;">«ДУМАЙТЕ САМИ»</h4>
-                        <p class="gold-text">Дебютный альбом, 2021</p>
-                        <p style="margin-top: 15px; color: rgba(255, 255, 255, 0.7);">Философия в каждом треке, глубина в каждой строчке</p>
+            <div class="card reveal">
+                <h3 class="card-title">🏆 ПОБЕДЫ НА БАТТЛ-ПЛОЩАДКАХ</h3>
+                <div style="margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: var(--gold); margin-bottom: 5px;">2022</h4>
+                        <p>Победа на «Кубке МЦ» против VS94SKI</p>
                     </div>
-                    
-                    <div style="text-align: center; padding: 30px; background: rgba(145, 70, 255, 0.1); border-radius: calc(var(--border-radius) - 10px);">
-                        <div style="font-size: 4rem; margin-bottom: 20px;">🎤</div>
-                        <h4 style="color: var(--neon-purple); margin-bottom: 15px; font-size: 1.5rem;">БАТТЛ-ПОБЕДЫ</h4>
-                        <p class="neon-text">Кубок МЦ 2022-2023</p>
-                        <p style="margin-top: 15px; color: rgba(255, 255, 255, 0.7);">Доминирование на главной баттл-площадке</p>
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: var(--gold); margin-bottom: 5px;">2023</h4>
+                        <p>Защита титула против Горизонта</p>
                     </div>
-                    
-                    <div style="text-align: center; padding: 30px; background: rgba(255, 215, 0, 0.1); border-radius: calc(var(--border-radius) - 10px);">
-                        <div style="font-size: 4rem; margin-bottom: 20px;">🔥</div>
-                        <h4 style="color: var(--fire-gold); margin-bottom: 15px; font-size: 1.5rem;">ЧСВ BATTLE 2024</h4>
-                        <p class="gold-text">Титул чемпиона</p>
-                        <p style="margin-top: 15px; color: rgba(255, 255, 255, 0.7);">Вершина карьеры, абсолютное признание</p>
-                    </div>
-                </div>
-                
-                <div class="delayed-reveal" style="margin-top: 60px; padding: 40px; background: rgba(255, 69, 0, 0.05); border-radius: calc(var(--border-radius) - 10px); border: 2px dashed rgba(255, 69, 0, 0.3);">
-                    <h4 style="color: var(--fire-gold); margin-bottom: 20px; text-align: center; font-size: 1.8rem;">КЛЮЧЕВЫЕ СОБЫТИЯ</h4>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                        <div>
-                            <h5 style="color: var(--fire-orange); margin-bottom: 10px;">2018</h5>
-                            <ul style="list-style: none; padding-left: 0;">
-                                <li style="margin-bottom: 8px; position: relative; padding-left: 20px;">
-                                    <span style="position: absolute; left: 0; color: var(--fire-orange);">•</span>
-                                    Баттл против 13/47 на RBL
-                                </li>
-                                <li style="margin-bottom: 8px; position: relative; padding-left: 20px;">
-                                    <span style="position: absolute; left: 0; color: var(--fire-orange);">•</span>
-                                    Конфликт с Drago, трек "Исповедь"
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div>
-                            <h5 style="color: var(--fire-orange); margin-bottom: 10px;">2020</h5>
-                            <ul style="list-style: none; padding-left: 0;">
-                                <li style="margin-bottom: 8px; position: relative; padding-left: 20px;">
-                                    <span style="position: absolute; left: 0; color: var(--fire-orange);">•</span>
-                                    Победа в Versus: TEAM+UP
-                                </li>
-                                <li style="margin-bottom: 8px; position: relative; padding-left: 20px;">
-                                    <span style="position: absolute; left: 0; color: var(--fire-orange);">•</span>
-                                    Стрим о коррупции в РАНГХиГС
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <div>
-                            <h5 style="color: var(--fire-orange); margin-bottom: 10px;">2022-2024</h5>
-                            <ul style="list-style: none; padding-left: 0;">
-                                <li style="margin-bottom: 8px; position: relative; padding-left: 20px;">
-                                    <span style="position: absolute; left: 0; color: var(--fire-orange);">•</span>
-                                    Защита титула на Кубке МЦ
-                                </li>
-                                <li style="margin-bottom: 8px; position: relative; padding-left: 20px;">
-                                    <span style="position: absolute; left: 0; color: var(--fire-orange);">•</span>
-                                    Чемпион ЧСВ Battle
-                                </li>
-                            </ul>
-                        </div>
+                    <div>
+                        <h4 style="color: var(--gold); margin-bottom: 5px;">2024</h4>
+                        <p>Баттл на «ЧСВ Battle» против Династа</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- НАГРАДЫ И ПРЕМИИ -->
+    <!-- НАГРАДЫ -->
     <section id="awards" class="section">
         <div class="container">
-            <h2 class="section-title">НАГРАДЫ И ПРЕМИИ</h2>
+            <h2 class="section-title reveal">НАГРАДЫ</h2>
             
-            <div class="awards-hologram">
-                <div class="hologram-card">
-                    <div class="hologram-icon">🏆</div>
-                    <h3 class="hologram-title">SLAY AWARDS 2025</h3>
-                    <p style="font-size: 1.3rem; margin-bottom: 20px;"><strong>Slay King</strong> — главная номинация</p>
-                    <p style="font-size: 1.3rem; margin-bottom: 20px;"><strong>Харизма года</strong> — народное признание</p>
-                    <p style="font-size: 1.3rem; margin-bottom: 20px;"><strong>Завоз года</strong> — лучший контент</p>
-                    <p style="margin-top: 30px; font-size: 1.1rem; color: rgba(255, 255, 255, 0.7);">
-                        Высшее признание в индустрии развлечений
-                    </p>
+            <div class="awards-grid">
+                <div class="award-card reveal">
+                    <div style="font-size: 3rem; color: var(--gold); margin-bottom: 20px;">🏆</div>
+                    <h3 style="color: var(--gold); margin-bottom: 15px; font-size: 1.5rem;">SLAY AWARDS 2025</h3>
+                    <p style="margin-bottom: 10px;"><strong>Slay King</strong> — главная номинация</p>
+                    <p style="margin-bottom: 10px;"><strong>Харизма года</strong></p>
                 </div>
                 
-                <div class="hologram-card">
-                    <div class="hologram-icon">⭐</div>
-                    <h3 class="hologram-title">THE STREAM AWARDS</h3>
-                    <p style="font-size: 1.3rem; margin-bottom: 20px;"><strong>Стример года:</strong> 2023, 2024, 2025</p>
-                    <p style="font-size: 1.3rem; margin-bottom: 20px;"><strong>Лучший стример (Игры и общение)</strong></p>
-                    <p style="font-size: 1.3rem; margin-bottom: 20px;"><strong>Прорыв года</strong> — 2022</p>
-                    <p style="margin-top: 30px; font-size: 1.1rem; color: rgba(255, 255, 255, 0.7);">
-                        Трехкратный обладатель высшей награды
-                    </p>
+                <div class="award-card reveal">
+                    <div style="font-size: 3rem; color: var(--gold); margin-bottom: 20px;">⭐</div>
+                    <h3 style="color: var(--gold); margin-bottom: 15px; font-size: 1.5rem;">THE STREAM AWARDS</h3>
+                    <p style="margin-bottom: 10px;"><strong>Стример года:</strong> 2023, 2024, 2025</p>
                 </div>
                 
-                <div class="hologram-card">
-                    <div class="hologram-icon">👑</div>
-                    <h3 class="hologram-title">СПЕЦИАЛЬНЫЕ ТИТУЛЫ</h3>
-                    <p style="font-size: 1.3rem; margin-bottom: 20px;"><strong>Самый умный парень 2025 года</strong></p>
-                    <p style="font-size: 1.3rem; margin-bottom: 20px;"><strong>Лисятник года</strong> — народное голосование</p>
-                    <p style="font-size: 1.3rem; margin-bottom: 20px;"><strong>Икона поколения</strong> — lifetime achievement</p>
-                    <p style="margin-top: 30px; font-size: 1.1rem; color: rgba(255, 255, 255, 0.7);">
-                        Признание заслуг и влияния
-                    </p>
+                <div class="award-card reveal">
+                    <div style="font-size: 3rem; color: var(--gold); margin-bottom: 20px;">👑</div>
+                    <h3 style="color: var(--gold); margin-bottom: 15px; font-size: 1.5rem;">СПЕЦИАЛЬНЫЕ ТИТУЛЫ</h3>
+                    <p style="margin-bottom: 10px;"><strong>Самый умный парень 2025</strong></p>
+                    <p style="margin-bottom: 10px;"><strong>Лисятник года</strong></p>
                 </div>
             </div>
         </div>
     </section>
     
     <!-- ЮТУБ ДОСТИЖЕНИЯ -->
-    <section id="youtube" class="section" style="background: rgba(10, 10, 10, 0.8);">
+    <section id="youtube" class="section" style="background: rgba(10, 10, 10, 0.7);">
         <div class="container">
-            <div class="youtube-auras">
-                <h2 class="section-title" style="color: #FF0000; margin-bottom: 60px;">🚀 ДОСТИЖЕНИЯ НА YOUTUBE</h2>
-                <p class="delayed-reveal" style="font-size: 1.4rem; margin-bottom: 60px; color: rgba(255, 255, 255, 0.9);">
-                    Легендарные вехи, которые изменили историю платформы и вдохновили миллионы
-                </p>
+            <div class="youtube-achievements reveal">
+                <h2 style="color: #FF0000; font-size: 2rem; margin-bottom: 30px; font-family: 'Orbitron', sans-serif;">🚀 ДОСТИЖЕНИЯ НА YOUTUBE</h2>
                 
-                <div class="aura-badges">
-                    <div class="aura-badge">
-                        <div class="aura-number">100К</div>
-                        <div style="font-size: 1.3rem; color: rgba(255, 255, 255, 0.9);">ПЕРВАЯ ВЕХА</div>
-                        <div style="margin-top: 15px; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Достигнуто в 2016</div>
-                        <div style="margin-top: 10px; font-size: 0.8rem; color: rgba(255, 255, 255, 0.5);">
-                            Начало легенды
-                        </div>
+                <div class="achievement-badges">
+                    <div class="achievement-badge reveal">
+                        <div style="font-size: 2.5rem; color: #FF0000; margin-bottom: 15px;">🔥</div>
+                        <div style="font-size: 2.2rem; font-weight: 900; color: white; margin-bottom: 10px;">100К</div>
+                        <div style="color: rgba(255, 255, 255, 0.8);">ПЕРВАЯ ВЕХА</div>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6);">2016</p>
                     </div>
                     
-                    <div class="aura-badge">
-                        <div class="aura-number">1М</div>
-                        <div style="font-size: 1.3rem; color: rgba(255, 255, 255, 0.9);">МИЛЛИОНЕР</div>
-                        <div style="margin-top: 15px; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">Достигнуто в 2018</div>
-                        <div style="margin-top: 10px; font-size: 0.8rem; color: rgba(255, 255, 255, 0.5);">
-                            Золотая кнопка
-                        </div>
+                    <div class="achievement-badge reveal">
+                        <div style="font-size: 2.5rem; color: #FF0000; margin-bottom: 15px;">🏆</div>
+                        <div style="font-size: 2.2rem; font-weight: 900; color: white; margin-bottom: 10px;">1М</div>
+                        <div style="color: rgba(255, 255, 255, 0.8);">МИЛЛИОНЕР</div>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6);">2018</p>
                     </div>
                     
-                    <div class="aura-badge">
-                        <div class="aura-number">10М</div>
-                        <div style="font-size: 1.3rem; color: rgba(255, 255, 255, 0.9);">БРИЛЛИАНТ</div>
-                        <div style="margin-top: 15px; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem;">20 февраля 2021</div>
-                        <div style="margin-top: 10px; font-size: 0.8rem; color: rgba(255, 255, 255, 0.5);">
-                            Бриллиантовая кнопка
-                        </div>
+                    <div class="achievement-badge reveal">
+                        <div style="font-size: 2.5rem; color: #FF0000; margin-bottom: 15px;">💎</div>
+                        <div style="font-size: 2.2rem; font-weight: 900; color: white; margin-bottom: 10px;">10М</div>
+                        <div style="color: rgba(255, 255, 255, 0.8);">БРИЛЛИАНТ</div>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6);">2021</p>
                     </div>
-                </div>
-                
-                <div class="delayed-reveal" style="margin-top: 60px; padding: 30px; background: rgba(255, 0, 0, 0.05); border-radius: calc(var(--border-radius) - 10px);">
-                    <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.8); text-align: center; line-height: 1.6;">
-                        Каждая кнопка — не просто цифра, а этап в истории, который изменил представление 
-                        о том, каким может быть русскоязычный контент на YouTube.
-                    </p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- СОЦИАЛЬНЫЕ СЕТИ -->
+    <!-- СОЦСЕТИ -->
     <section id="social" class="section">
         <div class="container">
-            <h2 class="section-title">СОЦИАЛЬНЫЕ СЕТИ</h2>
-            <p class="delayed-reveal" style="text-align: center; font-size: 1.4rem; margin-bottom: 50px; color: rgba(255, 255, 255, 0.9);">
-                Официальные ресурсы и сообщества B1GPapa — место, где живёт легенда
-            </p>
+            <h2 class="section-title reveal">СОЦИАЛЬНЫЕ СЕТИ</h2>
             
-            <div class="quantum-grid">
-                <a href="https://www.twitch.tv/b1gpapaa_" target="_blank" class="quantum-card" aria-label="Twitch канал B1GPapa">
-                    <div class="quantum-icon" style="color: #9146FF;">
-                        <i class="fab fa-twitch"></i>
-                    </div>
-                    <h3 class="quantum-name">TWITCH</h3>
-                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">
-                        Легендарные стримы. Архив истории. Место, где всё начиналось.
-                    </p>
-                    <div style="margin-top: 20px; padding: 10px; background: rgba(145, 70, 255, 0.1); border-radius: 10px;">
-                        <span style="color: #9146FF; font-size: 0.9rem;">Основная платформа</span>
-                    </div>
+            <div class="social-grid">
+                <a href="https://www.twitch.tv/b1gpapaa_" target="_blank" class="social-card reveal">
+                    <div style="font-size: 2.5rem; color: #9146FF; margin: 20px 0;">📺</div>
+                    <h3 style="margin-bottom: 10px;">TWITCH</h3>
+                    <p style="padding: 0 15px 20px;">Основная платформа для стримов</p>
                 </a>
                 
-                <a href="https://youtube.com/@b1gpapaa_" target="_blank" class="quantum-card" aria-label="YouTube канал B1GPapa">
-                    <div class="quantum-icon" style="color: #FF0000;">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <h3 class="quantum-name">YOUTUBE</h3>
-                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">
-                        10.5M+ подписчиков. Миллионы часов контента. Бриллиантовая кнопка.
-                    </p>
-                    <div style="margin-top: 20px; padding: 10px; background: rgba(255, 0, 0, 0.1); border-radius: 10px;">
-                        <span style="color: #FF0000; font-size: 0.9rem;">10.5M подписчиков</span>
-                    </div>
+                <a href="https://youtube.com/@b1gpapaa_" target="_blank" class="social-card reveal">
+                    <div style="font-size: 2.5rem; color: #FF0000; margin: 20px 0;">▶️</div>
+                    <h3 style="margin-bottom: 10px;">YOUTUBE</h3>
+                    <p style="padding: 0 15px 20px;">Главный канал с архивными записями</p>
                 </a>
                 
-                <a href="https://t.me/+I0vi14uCFcI5MzIy" target="_blank" class="quantum-card" aria-label="Telegram канал B1GPapa">
-                    <div class="quantum-icon" style="color: #26A5E4;">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <h3 class="quantum-name">TELEGRAM</h3>
-                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">
-                        Официальные анонсы, общение, эксклюзивный контент.
-                    </p>
-                    <div style="margin-top: 20px; padding: 10px; background: rgba(38, 165, 228, 0.1); border-radius: 10px;">
-                        <span style="color: #26A5E4; font-size: 0.9rem;">Основной канал</span>
-                    </div>
-                </a>
-                
-                <a href="https://discord.gg/h7ymnvfp4x" target="_blank" class="quantum-card" aria-label="Discord сервер B1GPapa">
-                    <div class="quantum-icon" style="color: #5865F2;">
-                        <i class="fab fa-discord"></i>
-                    </div>
-                    <h3 class="quantum-name">DISCORD</h3>
-                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">
-                        Сообщество настоящих фанатов. Живое общение в реальном времени.
-                    </p>
-                    <div style="margin-top: 20px; padding: 10px; background: rgba(88, 101, 242, 0.1); border-radius: 10px;">
-                        <span style="color: #5865F2; font-size: 0.9rem;">Активное сообщество</span>
-                    </div>
-                </a>
-                
-                <a href="https://vk.com/xwyrq0" target="_blank" class="quantum-card" aria-label="ВКонтакте группа B1GPapa">
-                    <div class="quantum-icon" style="color: #0077FF;">
-                        <i class="fab fa-vk"></i>
-                    </div>
-                    <h3 class="quantum-name">ВКОНТАКТЕ</h3>
-                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">
-                        Архивные материалы, мемы, воспоминания, фанатский контент.
-                    </p>
-                    <div style="margin-top: 20px; padding: 10px; background: rgba(0, 119, 255, 0.1); border-radius: 10px;">
-                        <span style="color: #0077FF; font-size: 0.9rem;">Фанатская группа</span>
-                    </div>
-                </a>
-                
-                <a href="https://t.me/pohansk" target="_blank" class="quantum-card" aria-label="Telegram для своих B1GPapa">
-                    <div class="quantum-icon" style="color: #26A5E4;">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <h3 class="quantum-name">TELEGRAM PRO</h3>
-                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.1rem;">
-                        Для избранных. Для своих. Эксклюзивный контент и закрытое общение.
-                    </p>
-                    <div style="margin-top: 20px; padding: 10px; background: rgba(38, 165, 228, 0.1); border-radius: 10px;">
-                        <span style="color: #26A5E4; font-size: 0.9rem;">Закрытый канал</span>
-                    </div>
+                <a href="https://t.me/+I0vi14uCFcI5MzIy" target="_blank" class="social-card reveal">
+                    <div style="font-size: 2.5rem; color: #26A5E4; margin: 20px 0;">📢</div>
+                    <h3 style="margin-bottom: 10px;">TELEGRAM</h3>
+                    <p style="padding: 0 15px 20px;">Официальный канал для анонсов</p>
                 </a>
             </div>
         </div>
@@ -2491,601 +1148,183 @@
             <div class="footer-logo">B1GPAPA</div>
             
             <p class="footer-quote">
-                "Человек, который горел так сильно, что сгорел до тла, 
-                но оставил после себя не пепел забвения, а вечный огонь в сердцах миллионов"
+                "Человек, который горел так сильно, что сгорел до тла"
             </p>
             
-            <div class="footer-social">
-                <a href="https://www.twitch.tv/b1gpapaa_" target="_blank" class="footer-social-link twitch" aria-label="Twitch">
-                    <i class="fab fa-twitch"></i>
-                </a>
-                <a href="https://youtube.com/@b1gpapaa_" target="_blank" class="footer-social-link youtube" aria-label="YouTube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://t.me/pohansk" target="_blank" class="footer-social-link telegram" aria-label="Telegram">
-                    <i class="fab fa-telegram"></i>
-                </a>
-                <a href="https://vk.com/xwyrq0" target="_blank" class="footer-social-link vk" aria-label="ВКонтакте">
-                    <i class="fab fa-vk"></i>
-                </a>
-                <a href="https://discord.gg/h7ymnvfp4x" target="_blank" class="footer-social-link discord" aria-label="Discord">
-                    <i class="fab fa-discord"></i>
-                </a>
+            <div style="margin: 30px 0;">
+                <div style="display: flex; justify-content: center; gap: 20px;">
+                    <a href="https://www.twitch.tv/b1gpapaa_" target="_blank" style="color: rgba(255, 255, 255, 0.7); font-size: 1.5rem;">
+                        <i class="fab fa-twitch"></i>
+                    </a>
+                    <a href="https://youtube.com/@b1gpapaa_" target="_blank" style="color: rgba(255, 255, 255, 0.7); font-size: 1.5rem;">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://t.me/pohansk" target="_blank" style="color: rgba(255, 255, 255, 0.7); font-size: 1.5rem;">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                </div>
             </div>
             
-            <p class="copyright">
-                Сайт создан с максимальной любовью и уважением к легенде. B1GPapa вечен. © 2023-2025<br>
-                Все права принадлежат их законным владельцам. FPS: <span id="fpsCounter" class="fps-counter">0</span>
+            <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem; margin-top: 30px;">
+                Сайт создан поклонниками © 2023-2025
             </p>
         </div>
     </footer>
-
-    <!-- МЕГА-СКРИПТ НА 1000+ СТРОК -->
+    
     <script>
-        // ==================== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ====================
-        let fps = 0;
-        let frameCount = 0;
-        let lastTime = performance.now();
-        let isMobile = window.innerWidth <= 768;
-        let isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
-        let isDesktop = window.innerWidth > 1024;
+        // БУРГЕР МЕНЮ ДЛЯ ТЕЛЕФОНА
+        const burger = document.querySelector('.burger');
+        const navMenu = document.querySelector('.nav-menu');
         
-        // ==================== ИНИЦИАЛИЗАЦИЯ ====================
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('%c🔥 B1GPAPA HYPERPREMIUM 🔥', 'font-size: 24px; color: #ff4500; font-weight: bold;');
-            console.log('%cВерсия: 4.0.0 | FPS оптимизация: MAX | Анимации: ULTRA', 'color: #00ff00;');
-            
-            initSystem();
-            createParticles();
-            createTimeline();
-            createCollabNetwork();
-            startFPSMonitor();
-            setupEventListeners();
-            setupScrollAnimations();
-            
-            // Запуск взрыва при загрузке
-            setTimeout(() => {
-                document.querySelector('.hero-explosion').style.animation = 'explosion 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
-            }, 500);
-        });
-        
-        // ==================== СИСТЕМНАЯ ИНИЦИАЛИЗАЦИЯ ====================
-        function initSystem() {
-            // Определение устройства
-            updateDeviceInfo();
-            
-            // Добавление класса для GPU ускорения
-            document.querySelectorAll('.card, .nav-link, .quantum-card, .hologram-card').forEach(el => {
-                el.classList.add('gpu-accelerated');
-            });
-            
-            // Инициализация навигации
-            setupNavigation();
-            
-            // Активация первой секции
-            document.querySelectorAll('.reveal, .delayed-reveal').forEach((el, index) => {
-                setTimeout(() => {
-                    el.classList.add('visible');
-                }, index * 100);
+        if (burger) {
+            burger.addEventListener('click', () => {
+                burger.classList.toggle('active');
+                navMenu.classList.toggle('active');
             });
         }
         
-        // ==================== FPS МОНИТОР И ОПТИМИЗАЦИЯ ====================
-        function startFPSMonitor() {
-            function updateFPS() {
-                frameCount++;
-                const currentTime = performance.now();
-                
-                if (currentTime >= lastTime + 1000) {
-                    fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
-                    document.getElementById('fpsCounter').textContent = fps;
-                    frameCount = 0;
-                    lastTime = currentTime;
-                    
-                    // Автоматическая оптимизация
-                    optimizeForFPS(fps);
-                }
-                
-                requestAnimationFrame(updateFPS);
-            }
-            
-            updateFPS();
-        }
-        
-        function optimizeForFPS(currentFPS) {
-            if (currentFPS < 30) {
-                // Упрощаем анимации при низком FPS
-                document.querySelectorAll('.parallax-layer, .particle, .hero-explosion').forEach(el => {
-                    el.style.animationPlayState = 'paused';
-                });
-                
-                // Убираем сложные эффекты
-                document.body.classList.add('performance-mode');
-            } else if (currentFPS > 60) {
-                // Включаем все эффекты при высоком FPS
-                document.querySelectorAll('.parallax-layer, .particle, .hero-explosion').forEach(el => {
-                    el.style.animationPlayState = 'running';
-                });
-                
-                document.body.classList.remove('performance-mode');
-            }
-        }
-        
-        // ==================== ЧАСТИЦЫ В ФОНЕ ====================
-        function createParticles() {
-            if (isMobile) return; // Не создаем частицы на мобилках
-            
-            const container = document.getElementById('particles');
-            const particleCount = isDesktop ? 150 : isTablet ? 80 : 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                // Случайные параметры
-                const size = Math.random() * 4 + 1;
-                const duration = Math.random() * 20 + 10;
-                const delay = Math.random() * 20;
-                const x = Math.random() * 100;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${x}vw`;
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `${delay}s`;
-                
-                // Случайный градиент
-                const gradients = [
-                    'linear-gradient(45deg, #ff0000, #ff4500)',
-                    'linear-gradient(45deg, #ff4500, #ff8c00)',
-                    'linear-gradient(45deg, #ff8c00, #ffd700)',
-                    'linear-gradient(45deg, #ffd700, #ffff00)'
-                ];
-                particle.style.background = gradients[Math.floor(Math.random() * gradients.length)];
-                
-                container.appendChild(particle);
-            }
-        }
-        
-        // ==================== ТАЙМЛАЙН ====================
-        function createTimeline() {
-            const timelineData = [
-                {
-                    year: "2017",
-                    content: "10-е место в рейтинге мировых игровых каналов от портала Fancensus. Начало признания на международном уровне.",
-                    highlight: false
-                },
-                {
-                    year: "2019",
-                    content: "В рейтинге Brand Analytics «ТОП-20 русскоязычных YouTube-блогеров» за июнь занял 16-е место, в сентябре поднялся до 12-го места.",
-                    highlight: false
-                },
-                {
-                    year: "2020",
-                    content: "Вошел в «Топ-20 русскоязычных YouTube-блогеров» по версии Brand Analytics. В июне занял 24-е место в списке «Топ-30 блогеров в YouTube».",
-                    highlight: false
-                },
-                {
-                    year: "2021",
-                    content: "⭐ БРИЛЛИАНТОВАЯ КНОПКА! 20 февраля канал достиг 10 миллионов подписчиков! Получил бриллиантовую кнопку от YouTube в июле. 8-я позиция в рейтинге «Топ авторов» в России.",
-                    highlight: true
-                },
-                {
-                    year: "2022",
-                    content: "9-е место в «Топ-20 каналов в YouTube», 24-е место в «Топ-30 инфлюенсеров», 3-е место в «Топ-20 блогеров VK». В научной статье назван видеоблогером, «создающим приятную атмосферу для взаимодействия».",
-                    highlight: false
-                },
-                {
-                    year: "2023",
-                    content: "6-е место в «Топ-20 каналов в YouTube». Telegram-канал: 2-е место в «Топ-20 блогеров Telegram» и 5-е место в «Топ-30 каналов Telegram».",
-                    highlight: false
-                }
-            ];
-            
-            const timeline = document.querySelector('.timeline');
-            
-            timelineData.forEach((item, index) => {
-                const timelineItem = document.createElement('div');
-                timelineItem.className = `timeline-item ${index % 2 === 0 ? 'odd' : 'even'} reveal`;
-                
-                const contentClass = item.highlight ? 'timeline-content highlight' : 'timeline-content';
-                
-                timelineItem.innerHTML = `
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-year">${item.year}</div>
-                    <div class="${contentClass}">
-                        <p style="font-size: 1.2rem; line-height: 1.6;">${item.content}</p>
-                    </div>
-                `;
-                
-                timeline.appendChild(timelineItem);
-                
-                // Задержка для анимации
-                setTimeout(() => {
-                    timelineItem.classList.add('visible');
-                }, index * 200);
-            });
-        }
-        
-        // ==================== НЕЙРОННАЯ СЕТЬ КОЛЛАБОРАЦИЙ ====================
-        function createCollabNetwork() {
-            if (isMobile) return; // Упрощаем для мобилок
-            
-            const collabs = [
-                { name: "OXXXYMIRON", x: 20, y: 20, size: 90, main: true },
-                { name: "KUPLINOV<br>PLAY", x: 80, y: 30, size: 90, main: true },
-                { name: "СЛАВА КПСС", x: 15, y: 50, size: 75, main: false },
-                { name: "MORGEN-<br>SHTERN", x: 85, y: 50, size: 80, main: false },
-                { name: "ABBAL-<br>BISCK", x: 30, y: 70, size: 70, main: false },
-                { name: "ИВАН ЗОЛО", x: 70, y: 70, size: 70, main: false },
-                { name: "DRAGO", x: 50, y: 90, size: 75, main: false },
-                { name: "ЗАМАЙ", x: 40, y: 40, size: 65, main: false },
-                { name: "ХХОС", x: 60, y: 40, size: 65, main: false },
-                { name: "МЦ ПОХО-<br>РОНИЛ", x: 25, y: 85, size: 65, main: false },
-                { name: "HALLOWEEN", x: 75, y: 85, size: 65, main: false },
-                { name: "VS94SKI", x: 50, y: 10, size: 70, main: false },
-                { name: "ГОРИЗОНТ", x: 90, y: 10, size: 65, main: false },
-                { name: "ДИНАСТА", x: 10, y: 10, size: 65, main: false },
-                { name: "БРОЛ", x: 50, y: 55, size: 60, main: false }
-            ];
-            
-            const network = document.getElementById('collabNetwork');
-            const nodes = [];
-            
-            // Создаем узлы
-            collabs.forEach(collab => {
-                const node = document.createElement('div');
-                node.className = `collab-node ${collab.main ? 'main' : ''}`;
-                node.innerHTML = collab.name;
-                node.style.left = `${collab.x}%`;
-                node.style.top = `${collab.y}%`;
-                node.style.width = `${collab.size}px`;
-                node.style.height = `${collab.size}px`;
-                node.style.animationDelay = `${Math.random() * 2}s`;
-                node.style.fontSize = collab.main ? '0.9rem' : '0.8rem';
-                
-                node.addEventListener('click', () => {
-                    showNotification(`🎤 Коллаборация с ${collab.name.replace('<br>', ' ')}`);
-                    pulseNode(node);
-                });
-                
-                node.addEventListener('mouseenter', () => {
-                    if (!isMobile) {
-                        node.style.zIndex = '100';
-                        node.style.transform = 'scale(1.3)';
-                    }
-                });
-                
-                node.addEventListener('mouseleave', () => {
-                    if (!isMobile) {
-                        node.style.zIndex = '10';
-                        node.style.transform = 'scale(1)';
-                    }
-                });
-                
-                network.appendChild(node);
-                nodes.push({ element: node, x: collab.x, y: collab.y });
-            });
-            
-            // Создаем соединения (только для десктопа)
-            if (isDesktop) {
-                createConnections(nodes);
-            }
-        }
-        
-        function createConnections(nodes) {
-            const network = document.getElementById('collabNetwork');
-            
-            // Соединяем главные узлы с остальными
-            nodes.forEach((node1, i) => {
-                nodes.forEach((node2, j) => {
-                    if (i < j && Math.random() > 0.7) { // Случайные соединения
-                        const connection = document.createElement('div');
-                        connection.className = 'connection';
-                        
-                        // Вычисляем координаты
-                        const x1 = node1.x;
-                        const y1 = node1.y;
-                        const x2 = node2.x;
-                        const y2 = node2.y;
-                        
-                        // Длина и угол
-                        const dx = x2 - x1;
-                        const dy = y2 - y1;
-                        const length = Math.sqrt(dx * dx + dy * dy) * 0.8; // 80% от расстояния
-                        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-                        
-                        connection.style.width = `${length}%`;
-                        connection.style.left = `${x1}%`;
-                        connection.style.top = `${y1}%`;
-                        connection.style.transform = `rotate(${angle}deg)`;
-                        connection.style.animationDelay = `${Math.random() * 3}s`;
-                        
-                        network.appendChild(connection);
-                    }
-                });
-            });
-        }
-        
-        function pulseNode(node) {
-            node.style.animation = 'collab-node-pulse 0.5s infinite alternate';
-            setTimeout(() => {
-                node.style.animation = 'collab-node-float 6s ease-in-out infinite';
-            }, 1000);
-        }
-        
-        // ==================== УВЕДОМЛЕНИЯ ====================
-        function showNotification(message) {
-            // Создаем уведомление
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <div style="font-size: 1.5rem;">🔔</div>
-                    <div>
-                        <div style="font-weight: bold; color: var(--fire-orange);">СИСТЕМНОЕ УВЕДОМЛЕНИЕ</div>
-                        <div>${message}</div>
-                    </div>
-                </div>
-            `;
-            
-            // Стили уведомления
-            notification.style.cssText = `
-                position: fixed;
-                top: 120px;
-                right: 20px;
-                background: rgba(20, 20, 20, 0.95);
-                backdrop-filter: blur(20px);
-                padding: 20px;
-                border-radius: 15px;
-                border-left: 5px solid var(--fire-orange);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-                z-index: 9999;
-                max-width: 400px;
-                transform: translateX(500px);
-                transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                font-family: 'Montserrat', sans-serif;
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Показываем
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 10);
-            
-            // Скрываем через 3 секунды
-            setTimeout(() => {
-                notification.style.transform = 'translateX(500px)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 500);
-            }, 3000);
-        }
-        
-        // ==================== НАВИГАЦИЯ ====================
-        function setupNavigation() {
-            const burger = document.getElementById('burger');
-            const navMenu = document.getElementById('navMenu');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const header = document.getElementById('header');
-            
-            // Бургер меню
-            if (burger) {
-                burger.addEventListener('click', () => {
-                    burger.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-                });
-            }
-            
-            // Закрытие меню при клике на ссылку
-            navLinks.forEach(link => {
+        // ЗАКРЫТЬ МЕНЮ ПРИ КЛИКЕ НА ССЫЛКУ (ТОЛЬКО НА ТЕЛЕФОНЕ)
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
-                    if (isMobile || isTablet) {
-                        burger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }
-                });
-            });
-            
-            // Закрытие меню при клике вне его
-            document.addEventListener('click', (e) => {
-                if (navMenu.classList.contains('active') && 
-                    !navMenu.contains(e.target) && 
-                    !burger.contains(e.target)) {
                     burger.classList.remove('active');
                     navMenu.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
-            });
-            
-            // Изменение шапки при скролле
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-        }
-        
-        // ==================== АНИМАЦИИ ПРИ СКРОЛЛЕ ====================
-        function setupScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        
-                        // Особые анимации для разных элементов
-                        if (entry.target.classList.contains('timeline-item')) {
-                            setTimeout(() => {
-                                entry.target.style.opacity = '1';
-                                entry.target.style.transform = 'translateY(0) scale(1)';
-                            }, 100);
-                        }
-                        
-                        observer.unobserve(entry.target);
-                    }
                 });
-            }, observerOptions);
-            
-            // Наблюдаем за всеми элементами с классами reveal
-            document.querySelectorAll('.reveal, .delayed-reveal, .timeline-item').forEach(el => {
-                observer.observe(el);
             });
         }
         
-        // ==================== СВАЙП ДЛЯ МОБИЛЬНЫХ ====================
-        function setupSwipeGestures() {
-            if (!isMobile) return;
-            
-            let startY;
-            
-            document.addEventListener('touchstart', (e) => {
-                startY = e.touches[0].clientY;
-            }, { passive: true });
-            
-            document.addEventListener('touchend', (e) => {
-                if (!startY) return;
-                
-                const endY = e.changedTouches[0].clientY;
-                const diff = startY - endY;
-                
-                // Если свайп вверх более 50px
-                if (diff > 50) {
-                    scrollToNextSection('down');
-                }
-                // Если свайп вниз более 50px
-                else if (diff < -50) {
-                    scrollToNextSection('up');
-                }
-                
-                startY = null;
-            }, { passive: true });
-        }
+        // АКТИВНАЯ ССЫЛКА ПРИ СКРОЛЛЕ
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
         
-        function scrollToNextSection(direction) {
-            const sections = document.querySelectorAll('section');
-            const currentScroll = window.scrollY;
-            let targetSection = null;
+        window.addEventListener('scroll', () => {
+            let current = '';
             
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
                 
-                if (direction === 'down') {
-                    if (sectionTop > currentScroll + 100) {
-                        if (!targetSection || sectionTop < targetSection.offsetTop) {
-                            targetSection = section;
-                        }
-                    }
-                } else {
-                    if (sectionTop < currentScroll - 100) {
-                        if (!targetSection || sectionTop > targetSection.offsetTop) {
-                            targetSection = section;
-                        }
-                    }
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
                 }
             });
             
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        }
-        
-        // ==================== УТИЛИТЫ ====================
-        function updateDeviceInfo() {
-            isMobile = window.innerWidth <= 768;
-            isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
-            isDesktop = window.innerWidth > 1024;
-        }
-        
-        function setupEventListeners() {
-            // Ресайз
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    updateDeviceInfo();
-                    setupSwipeGestures();
-                }, 250);
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
             });
+        });
+        
+        // АНИМАЦИЯ ПОЯВЛЕНИЯ ЭЛЕМЕНТОВ
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const revealPoint = 150;
             
-            // Клики по карточкам
-            document.querySelectorAll('.quantum-card').forEach(card => {
-                card.addEventListener('click', (e) => {
-                    if (!card.href) return;
+            revealElements.forEach(element => {
+                const revealTop = element.getBoundingClientRect().top;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+        
+        // КУРСОР ТОЛЬКО ДЛЯ ПК
+        if (window.innerWidth > 1024) {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorRing = document.querySelector('.cursor-ring');
+            
+            document.addEventListener('mousemove', (e) => {
+                if (cursorDot && cursorRing) {
+                    cursorDot.style.left = e.clientX + 'px';
+                    cursorDot.style.top = e.clientY + 'px';
                     
-                    // Эффект клика
-                    card.style.transform = 'scale(0.95)';
                     setTimeout(() => {
-                        card.style.transform = '';
-                    }, 200);
-                });
+                        cursorRing.style.left = e.clientX + 'px';
+                        cursorRing.style.top = e.clientY + 'px';
+                    }, 50);
+                }
             });
+        }
+        
+        // АДАПТИВНОЕ ОТОБРАЖЕНИЕ КОНТЕНТА
+        function checkDevice() {
+            const isMobile = window.innerWidth <= 768;
+            const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+            const isDesktop = window.innerWidth > 1024;
             
-            // Ховер эффекты для десктопа
-            if (isDesktop) {
-                document.querySelectorAll('.card, .quantum-card, .hologram-card').forEach(card => {
-                    card.addEventListener('mouseenter', () => {
-                        card.style.zIndex = '100';
-                    });
-                    
-                    card.addEventListener('mouseleave', () => {
-                        card.style.zIndex = '1';
-                    });
+            // Можно добавить логику для разных устройств
+            if (isMobile) {
+                console.log('Мобильная версия активна');
+                // Добавляем свайп-жесты для мобилок
+                let startY;
+                
+                document.addEventListener('touchstart', (e) => {
+                    startY = e.touches[0].clientY;
                 });
+                
+                document.addEventListener('touchend', (e) => {
+                    if (!startY) return;
+                    
+                    const endY = e.changedTouches[0].clientY;
+                    const diff = startY - endY;
+                    
+                    // Если свайп вверх более 50px
+                    if (diff > 50) {
+                        // Прокрутка вниз
+                        window.scrollBy({ top: 300, behavior: 'smooth' });
+                    }
+                    // Если свайп вниз более 50px
+                    else if (diff < -50) {
+                        // Прокрутка вверх
+                        window.scrollBy({ top: -300, behavior: 'smooth' });
+                    }
+                    
+                    startY = null;
+                });
+            }
+            
+            if (isDesktop) {
+                console.log('Десктопная версия активна');
+                // Запускаем сложные анимации только на ПК
+                const heroTitle = document.querySelector('.hero-title');
+                if (heroTitle) {
+                    heroTitle.style.animation = 'flicker 3s infinite alternate, float 6s ease-in-out infinite';
+                }
             }
         }
         
-        // ==================== СЕКРЕТНЫЕ КОМАНДЫ ====================
-        console.log('%c=== СИСТЕМНЫЕ КОМАНДЫ B1GPAPA ===', 'color: #ff4500; font-weight: bold;');
-        console.log('%c• b1gMenu() - Открыть системное меню', 'color: #00ffea;');
-        console.log('%c• turboMode() - Включить турбо-режим', 'color: #ff0000;');
-        console.log('%c• showStats() - Показать статистику', 'color: #00ff00;');
+        // Проверяем устройство при загрузке и изменении размера
+        window.addEventListener('load', checkDevice);
+        window.addEventListener('resize', checkDevice);
         
-        window.b1gMenu = () => {
-            showNotification('🚀 Системное меню активировано');
-            document.querySelectorAll('.card').forEach(card => {
-                card.style.animation = 'pulse 1s infinite';
-            });
-        };
-        
-        window.turboMode = () => {
-            showNotification('⚡ Турбо-режим активирован!');
-            document.querySelectorAll('*').forEach(el => {
-                if (el.style.animationDuration) {
-                    el.style.animationDuration = '0.5s';
-                }
-            });
-        };
-        
-        window.showStats = () => {
-            const stats = `
-                📊 СТАТИСТИКА СИСТЕМЫ:
-                • FPS: ${fps}
-                • Устройство: ${isMobile ? 'Мобильное' : isTablet ? 'Планшет' : 'Десктоп'}
-                • Элементов на странице: ${document.querySelectorAll('*').length}
-                • Анимаций: ${document.querySelectorAll('[style*="animation"]').length}
-                • Время загрузки: ${performance.now().toFixed(0)}ms
-            `;
+        // СКОРОСТЬ ПРОКРУТКИ ДЛЯ ТЕЛЕФОНА (ПЛАВНЕЕ)
+        if (window.innerWidth <= 768) {
+            document.documentElement.style.scrollBehavior = 'smooth';
             
-            console.log(`%c${stats}`, 'color: #00ffea; background: #000; padding: 10px; border-radius: 5px;');
-            showNotification('📊 Статистика выведена в консоль');
-        };
+            // Увеличиваем область клика для сенсорных экранов
+            document.querySelectorAll('a, button').forEach(element => {
+                element.style.padding = '12px 0';
+            });
+        }
         
-        // Автозапуск
-        setupSwipeGestures();
+        // ИНИЦИАЛИЗАЦИЯ
+        document.addEventListener('DOMContentLoaded', () => {
+            revealOnScroll();
+            checkDevice();
+            
+            // Активируем первую ссылку в меню
+            if (navLinks.length > 0) {
+                navLinks[0].classList.add('active');
+            }
+        });
     </script>
 </body>
 </html>
